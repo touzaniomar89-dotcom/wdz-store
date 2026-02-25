@@ -1,56 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>Checkout - WDZ Store</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+<style>
+table{
+  width:95%;
+  margin:20px auto;
+  border-collapse:collapse;
+}
+th, td{
+  border:1px solid #ccc;
+  padding:8px;
+  text-align:center;
+}
+th{
+  background:#111;
+  color:white;
+}
+form{
+  width:95%;
+  margin:20px auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+input, textarea{
+  padding:8px;
+}
+button{
+  padding:10px;
+  background:green;
+  color:white;
+  border:none;
+}
+</style>
 </head>
 <body>
 
-<h1>Checkout 🧾</h1>
+<h2 style="text-align:center;">تفاصيل الطلب</h2>
 
-<div class="card">
-<form id="orderForm">
-  <input type="text" id="name" placeholder="Full Name" required><br><br>
-  <input type="text" id="phone" placeholder="Phone" required><br><br>
-  <input type="text" id="city" placeholder="City" required><br><br>
-  <input type="text" id="address" placeholder="Address" required><br><br>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>City</th>
+      <th>Address</th>
+      <th>Product</th>
+      <th>Status</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody id="order-table"></tbody>
+</table>
 
-  <button type="submit">Complete Order</button>
+<h2 style="text-align:center;">بيانات العميل</h2>
+
+<form id="order-form">
+  <input type="text" id="name" placeholder="الاسم الكامل" required>
+  <input type="text" id="phone" placeholder="رقم الهاتف" required>
+  <input type="text" id="city" placeholder="المدينة" required>
+  <input type="text" id="address" placeholder="العنوان الكامل" required>
+  <button type="submit">إتمام الطلب</button>
 </form>
-</div>
 
-<script>
-document.getElementById("orderForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  fetch("https://script.google.com/macros/s/AKfycbwNyKzMXxMWpwRPgC3UarCesxAeNkI_nhM1A0_XH3XLyF1kpKTrc-o7n8Hajr7GRFZQ/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      phone: document.getElementById("phone").value,
-      city: document.getElementById("city").value,
-      address: document.getElementById("address").value,
-      product: "Cool Sneakers",
-      size: "42",
-      color: "Black",
-      quantity: 1,
-      total: 49
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      window.location.href = "thankyou.html";
-    } else {
-      alert("Error sending order");
-    }
-  })
-  .catch(err => {
-    alert("Connection error");
-    console.error(err);
-  });
-});
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>
