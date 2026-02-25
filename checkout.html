@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout - WDZ Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Checkout 🧾</h1>
+
+<div class="card">
+<form id="orderForm">
+  <input type="text" id="name" placeholder="Full Name" required><br><br>
+  <input type="text" id="phone" placeholder="Phone" required><br><br>
+  <input type="text" id="city" placeholder="City" required><br><br>
+  <input type="text" id="address" placeholder="Address" required><br><br>
+
+  <button type="submit">Complete Order</button>
+</form>
+</div>
+
+<script>
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("https://script.google.com/macros/s/AKfycbwNyKzMXxMWpwRPgC3UarCesxAeNkI_nhM1A0_XH3XLyF1kpKTrc-o7n8Hajr7GRFZQ/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      city: document.getElementById("city").value,
+      address: document.getElementById("address").value,
+      product: "Cool Sneakers",
+      size: "42",
+      color: "Black",
+      quantity: 1,
+      total: 49
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "success") {
+      window.location.href = "thankyou.html";
+    } else {
+      alert("Error sending order");
+    }
+  })
+  .catch(err => {
+    alert("Connection error");
+    console.error(err);
+  });
+});
+</script>
+
+</body>
+</html>
