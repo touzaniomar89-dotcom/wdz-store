@@ -8,105 +8,288 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
+/* =========================================
+   WDZ STORE – PREMIUM SHOPIFY STYLE UI
+   (FULL PROFESSIONAL UPGRADE)
+========================================= */
 
-body{
-background:radial-gradient(circle at top,#141414,#0a0a0a 60%);
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
-text-align:center;
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+  --black: #0e0e0e;
+  --dark: #1a1a1a;
+  --white: #ffffff;
+  --light: #f7f7f7;
+  --gray: #8c8c8c;
+  --border: #ececec;
+
+  --orange: #ff6a00;
+  --orange-hover: #ff8533;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-soft: 0 4px 15px rgba(0,0,0,0.06);
+  --shadow-medium: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-hover: 0 20px 45px rgba(0,0,0,0.15);
+
+  --transition: all 0.3s ease;
 }
 
-.container{
-max-width:650px;
-background:linear-gradient(145deg,#141414,#0f0f0f);
-padding:60px 40px;
-border-radius:25px;
-box-shadow:0 0 60px rgba(0,255,100,.15);
-animation:fade .6s ease;
-border:1px solid rgba(255,255,255,.05);
+/* ---------- GLOBAL RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes fade{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: var(--light);
+  color: var(--black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-.success-icon{
-font-size:80px;
-color:#00ff88;
-margin-bottom:25px;
-animation:pop .6s ease;
+/* ---------- TYPOGRAPHY ---------- */
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
 }
 
-@keyframes pop{
-0%{transform:scale(0);}
-100%{transform:scale(1);}
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
-h2{
-margin-bottom:15px;
-font-size:28px;
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-p{
-opacity:.85;
-margin-bottom:30px;
-font-size:16px;
+p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  margin-bottom: 15px;
 }
 
-.steps{
-background:#181818;
-padding:25px;
-border-radius:15px;
-margin-bottom:35px;
-font-size:14px;
-line-height:1.7;
+/* ---------- HEADER ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--black);
+  padding: 20px 60px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 
-.btn{
-display:inline-block;
-margin:12px;
-padding:16px 35px;
-border-radius:14px;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
+header h1,
+header a,
+header nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
-.home-btn{
-background:#ff1e1e;
-color:#fff;
-box-shadow:0 10px 30px rgba(255,0,0,.4);
+header nav a:hover {
+  color: var(--orange);
 }
 
-.home-btn:hover{
-transform:translateY(-3px);
-box-shadow:0 15px 40px rgba(255,0,0,.7);
+/* ---------- LAYOUT SPACING ---------- */
+section {
+  padding: 80px 60px;
 }
 
-.whatsapp-btn{
-background:#25D366;
-color:#fff;
-box-shadow:0 10px 30px rgba(37,211,102,.4);
+.container {
+  max-width: 1200px;
+  margin: auto;
 }
 
-.whatsapp-btn:hover{
-transform:translateY(-3px);
-box-shadow:0 15px 40px rgba(37,211,102,.7);
+/* ---------- BUTTONS ---------- */
+button,
+.btn,
+input[type="submit"] {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-soft);
 }
 
-.upsell{
-margin-top:35px;
-padding:25px;
-background:#181818;
-border-radius:15px;
-font-size:14px;
-border:1px solid rgba(255,255,255,.05);
+button:hover,
+.btn:hover,
+input[type="submit"]:hover {
+  background: var(--orange-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------- PRODUCT GRID ---------- */
+.products,
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+.product,
+.product-card,
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product:hover,
+.product-card:hover,
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.product img,
+.product-card img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin-bottom: 15px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--orange);
+  margin: 10px 0;
+}
+
+/* ---------- CART ---------- */
+.cart,
+.cart-sidebar {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-total {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 25px;
+}
+
+/* ---------- CHECKOUT FORM ---------- */
+form {
+  background: var(--white);
+  padding: 45px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+  max-width: 650px;
+  margin: auto;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  transition: var(--transition);
+  background: #fafafa;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--orange);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,106,0,0.15);
+  background: var(--white);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 50px 20px;
+  margin-top: 80px;
+}
+
+/* ---------- LINKS ---------- */
+a {
+  color: var(--orange);
+  transition: var(--transition);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  section {
+    padding: 60px 30px;
+  }
+
+  header {
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  section {
+    padding: 50px 20px;
+  }
+
+  button,
+  .btn,
+  input[type="submit"] {
+    width: 100%;
+    text-align: center;
+  }
+
+  .product,
+  .product-card,
+  .card {
+    padding: 18px;
+  }
+
+  form {
+    padding: 30px 20px;
+  }
 }
 </style>
 </head>
