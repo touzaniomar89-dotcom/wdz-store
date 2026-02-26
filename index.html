@@ -3,199 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WDZ GLOBAL</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Cairo',sans-serif;
-}
-
-body{
-  background:#0f0f0f;
-  color:white;
-  overflow-x:hidden;
-}
-
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 8%;
-  position:fixed;
-  width:100%;
-  top:0;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  z-index:1000;
-}
-
-.logo{
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  margin:0 15px;
-  font-weight:600;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:#00f0ff;
-}
-
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,#000000,#111111,#1a1a1a);
-  padding:0 20px;
-}
-
-.hero h1{
-  font-size:60px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.hero h1 span{
-  color:#00f0ff;
-}
-
-.hero p{
-  margin:20px 0;
-  font-size:18px;
-  color:#ccc;
-}
-
-.hero button{
-  padding:15px 40px;
-  border:none;
-  background:#00f0ff;
-  color:black;
-  font-weight:700;
-  font-size:16px;
-  cursor:pointer;
-  border-radius:50px;
-  transition:0.3s;
-}
-
-.hero button:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px #00f0ff;
-}
-
-.products{
-  padding:120px 8%;
-  background:#111;
-  text-align:center;
-}
-
-.products h2{
-  font-size:40px;
-  margin-bottom:60px;
-}
-
-.product-card{
-  background:#1a1a1a;
-  padding:40px;
-  border-radius:20px;
-  width:300px;
-  margin:auto;
-  transition:0.3s;
-  border:1px solid rgba(255,255,255,0.05);
-}
-
-.product-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 30px rgba(0,240,255,0.3);
-}
-
-.product-card h3{
-  margin-bottom:15px;
-}
-
-.product-card p{
-  color:#aaa;
-  margin-bottom:20px;
-}
-
-.product-card button{
-  padding:10px 25px;
-  border:none;
-  background:#00f0ff;
-  color:black;
-  font-weight:700;
-  border-radius:30px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.product-card button:hover{
-  box-shadow:0 0 15px #00f0ff;
-}
-
-footer{
-  text-align:center;
-  padding:30px;
-  background:#0a0a0a;
-  color:#777;
-}
-</style>
+<title>WDZ Store</title>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">WDZ GLOBAL</div>
-  <nav>
-    <a href="#">الرئيسية</a>
-    <a href="#products">منتجاتنا</a>
-    <a href="#">تواصل</a>
-  </nav>
-</header>
+<h1>منتجاتنا</h1>
 
-<section class="hero">
-  <h1>WELCOME TO <span>WDZ</span></h1>
-  <p>براند عالمي بأسلوب عصري وقوة أداء</p>
-  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
-    تسوق الآن
-  </button>
-</section>
+<div>
+  <h3>حذاء رياضي</h3>
+  <p>299 درهم</p>
+  <button onclick="orderProduct('حذاء رياضي',299)">اطلب الآن</button>
+</div>
 
-<section class="products" id="products">
-  <h2>منتجاتنا</h2>
-
-  <div class="product-card">
-    <h3>حذاء رياضي</h3>
-    <p>تصميم عصري - جودة عالية - أداء قوي</p>
-    <button onclick="orderProduct('حذاء رياضي')">اطلب الآن</button>
-  </div>
-
-</section>
-
-<footer>
-  © 2026 WDZ GLOBAL - All Rights Reserved
-</footer>
+<div>
+  <h3>ساعة ذكية</h3>
+  <p>499 درهم</p>
+  <button onclick="orderProduct('ساعة ذكية',499)">اطلب الآن</button>
+</div>
 
 <script>
-function orderProduct(product){
-  alert("تم اختيار: " + product);
+function orderProduct(name, price){
+  const cart = [{
+    name: name,
+    price: price
+  }];
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "checkout.html";
 }
 </script>
 
-  <div id="toast" class="toast"></div>
 </body>
 </html>
-
