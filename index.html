@@ -2,17 +2,40 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>WDZ Store</title>
+<title>WDZ GLOBAL</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>WDZ Store</h1>
+<header>
+  <div class="logo">WDZ GLOBAL</div>
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#">منتجاتنا</a>
+    <a href="#">تواصل</a>
+  </nav>
+</header>
 
-<div class="product-card">
-  <h2>حذاء رياضي</h2>
-  <button onclick="orderProduct('حذاء رياضي')">اطلب الآن</button>
-</div>
+<section class="hero">
+  <h1>WELCOME TO <span>WDZ</span></h1>
+  <p>براند عالمي بأسلوب عصري وقوة أداء</p>
+  <button onclick="document.getElementById('products').scrollIntoView()">تسوق الآن</button>
+</section>
+
+<section class="products" id="products">
+  <h2>منتجاتنا</h2>
+
+  <div class="product-card">
+    <h3>حذاء رياضي</h3>
+    <p>تصميم عصري - جودة عالية - أداء قوي</p>
+    <button onclick="orderProduct('حذاء رياضي')">اطلب الآن</button>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 WDZ GLOBAL - All Rights Reserved
+</footer>
 
 <script src="main.js"></script>
 </body>
