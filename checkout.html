@@ -164,9 +164,7 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0J
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* =========================
-   عرض المنتج في الملخص
-========================= */
+/* عرض المنتج */
 
 if(cart.length === 0){
   document.querySelector(".summary").innerHTML =
@@ -176,9 +174,7 @@ if(cart.length === 0){
   document.getElementById("product-price").innerText = cart[0].price + " درهم";
 }
 
-/* =========================
-   إرسال الطلب
-========================= */
+/* إرسال الطلب */
 
 document.getElementById("order-form").addEventListener("submit", async function(e){
 
@@ -194,32 +190,29 @@ document.getElementById("order-form").addEventListener("submit", async function(
   button.innerText = "جاري الإرسال...";
 
   const orderData = {
-    product: cart[0].name,
-    price: cart[0].price,
     name: document.getElementById("name").value.trim(),
     phone: document.getElementById("phone").value.trim(),
     city: document.getElementById("city").value,
     address: document.getElementById("address").value.trim(),
-    payment: document.getElementById("payment").value,
-    notes: document.getElementById("notes").value.trim()
+    product: cart[0].name
   };
 
   try{
 
     const response = await fetch(WEB_APP_URL, {
       method: "POST",
-      body: JSON.stringify(orderData),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderData)
     });
 
-    const result = await response.text();
-    console.log(result);
+    const result = await response.json();
 
-    localStorage.removeItem("cart");
-
-    window.location.href = "thankyou.html";
+    if(result.result === "success"){
+      localStorage.removeItem("cart");
+      window.location.href = "thankyou.html";
+    }else{
+      throw new Error("Script error");
+    }
 
   }catch(error){
 
