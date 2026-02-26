@@ -5,40 +5,53 @@ function orderProduct(productName){
   window.location.href = "checkout.html";
 }
 
-if(window.location.pathname.includes("checkout.html")){
-  const product = localStorage.getItem("selectedProduct");
-  document.getElementById("product-name").innerText = product;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-document.getElementById("order-form")?.addEventListener("submit", function(e){
-  e.preventDefault();
+  const productDisplay = document.getElementById("product-name");
+  const form = document.getElementById("order-form");
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const city = document.getElementById("city").value;
-  const address = document.getElementById("address").value;
-  const product = localStorage.getItem("selectedProduct");
+  if(productDisplay){
+    const product = localStorage.getItem("selectedProduct");
+    productDisplay.textContent = product ? product : "منتج غير معروف";
+  }
 
-  fetch(SCRIPT_URL,{
-    method:"POST",
-    body:JSON.stringify({
-      name,
-      phone,
-      city,
-      address,
-      product
-    })
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    if(data.result==="success"){
-      localStorage.removeItem("selectedProduct");
-      window.location.href="thankyou.html";
-    }else{
-      alert("خطأ في الإرسال");
-    }
-  })
-  .catch(()=>{
-    alert("مشكلة في الاتصال");
-  });
+  if(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const button = form.querySelector("button");
+      button.textContent = "جاري الإرسال...";
+      button.disabled = true;
+
+      const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        city: document.getElementById("city").value,
+        address: document.getElementById("address").value,
+        product: localStorage.getItem("selectedProduct")
+      };
+
+      fetch(SCRIPT_URL,{
+        method:"POST",
+        body:JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(response => {
+        if(response.result === "success"){
+          localStorage.removeItem("selectedProduct");
+          window.location.href="thankyou.html";
+        } else {
+          alert("حدث خطأ");
+          button.textContent = "تأكيد الطلب";
+          button.disabled = false;
+        }
+      })
+      .catch(()=>{
+        alert("مشكلة في الاتصال");
+        button.textContent = "تأكيد الطلب";
+        button.disabled = false;
+      });
+    });
+  }
+
 });
