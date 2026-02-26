@@ -2,30 +2,191 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>إتمام الطلب - WDZ</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إتمام الطلب | WDZ GLOBAL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Cairo',sans-serif;
+}
+
+body{
+  background:#0f0f0f;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.checkout-box{
+  background:#1a1a1a;
+  width:100%;
+  max-width:600px;
+  padding:40px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 40px rgba(0,240,255,0.08);
+  animation:fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+h2{
+  text-align:center;
+  margin-bottom:25px;
+  font-weight:900;
+}
+
+.summary{
+  background:#111;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:25px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.summary p{
+  margin:5px 0;
+  color:#ccc;
+}
+
+.summary span{
+  color:#00f0ff;
+  font-weight:700;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+}
+
+input, select{
+  margin-bottom:15px;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  background:#111;
+  color:white;
+  font-size:15px;
+  outline:none;
+  transition:0.3s;
+}
+
+input:focus, select:focus{
+  box-shadow:0 0 10px rgba(0,240,255,0.5);
+}
+
+button{
+  padding:15px;
+  border:none;
+  border-radius:40px;
+  background:#00f0ff;
+  color:black;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00f0ff;
+}
+
+.secure{
+  text-align:center;
+  margin-top:15px;
+  font-size:13px;
+  color:#888;
+}
+</style>
 </head>
+
 <body>
 
-<section class="checkout-section">
+<div class="checkout-box">
 
-  <div class="checkout-box">
-    <h2>إتمام الطلب</h2>
+<h2>إتمام الطلب</h2>
 
-    <p>المنتج:</p>
-    <p id="product-name" style="color:#00ff88;"></p>
+<div class="summary">
+  <p>المنتج: <span id="product-name"></span></p>
+  <p>السعر: <span id="product-price"></span></p>
+</div>
 
-    <form id="order-form">
-      <input type="text" id="name" placeholder="الاسم الكامل" required>
-      <input type="text" id="phone" placeholder="رقم الهاتف" required>
-      <input type="text" id="city" placeholder="المدينة" required>
-      <input type="text" id="address" placeholder="العنوان الكامل" required>
-      <button type="submit">تأكيد الطلب</button>
-    </form>
-  </div>
+<form id="order-form">
 
-</section>
+  <input type="text" id="name" placeholder="الاسم الكامل" required>
+  <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+  
+  <select id="city" required>
+    <option value="">اختر المدينة</option>
+    <option>الدار البيضاء</option>
+    <option>الرباط</option>
+    <option>مراكش</option>
+    <option>فاس</option>
+    <option>طنجة</option>
+  </select>
 
-<script src="main.js"></script>
+  <input type="text" id="address" placeholder="العنوان الكامل" required>
+
+  <select id="payment" required>
+    <option value="">طريقة الدفع</option>
+    <option>الدفع عند الاستلام</option>
+    <option>تحويل بنكي</option>
+  </select>
+
+  <textarea id="notes" placeholder="ملاحظات إضافية (اختياري)" 
+    style="padding:14px;border-radius:12px;border:none;background:#111;color:white;margin-bottom:15px;resize:none;height:80px;"></textarea>
+
+  <button type="submit">تأكيد الطلب</button>
+
+</form>
+
+<div class="secure">
+  🔒 جميع معلوماتك آمنة ومشفرة
+</div>
+
+</div>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+if(cart.length > 0){
+  document.getElementById("product-name").innerText = cart[0].name;
+  document.getElementById("product-price").innerText = cart[0].price;
+}
+
+document.getElementById("order-form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const orderData = {
+    product: cart[0]?.name || "",
+    price: cart[0]?.price || "",
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    city: document.getElementById("city").value,
+    address: document.getElementById("address").value,
+    payment: document.getElementById("payment").value,
+    notes: document.getElementById("notes").value
+  };
+
+  console.log(orderData);
+
+  alert("تم إرسال طلبك بنجاح ✔");
+
+  localStorage.removeItem("cart");
+});
+</script>
+
 </body>
 </html>
