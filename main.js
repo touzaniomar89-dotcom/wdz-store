@@ -1,55 +1,13 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNyKzMXxMWpwRPgC3UarCesxAeNkI_nhM1A0_XH3XLyF1kpKTrc-o7n8Hajr7GRFZQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
 
-function viewProduct(name, price){
-  localStorage.setItem("product", JSON.stringify({name, price}));
-  window.location.href = "product.html";
-}
-
-if(window.location.pathname.includes("product.html")){
-  const product = JSON.parse(localStorage.getItem("product"));
-  document.getElementById("product-name").innerText = product.name;
-  document.getElementById("product-price").innerText = "السعر: " + product.price + "$";
-}
-
-function addToCart(){
-  const product = JSON.parse(localStorage.getItem("product"));
-  const size = document.getElementById("size").value;
-  const color = document.getElementById("color").value;
-  const quantity = parseInt(document.getElementById("quantity").value);
-
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  cart.push({
-    name: product.name,
-    price: product.price,
-    size,
-    color,
-    quantity
-  });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
+function orderProduct(productName){
+  localStorage.setItem("selectedProduct", productName);
   window.location.href = "checkout.html";
 }
 
 if(window.location.pathname.includes("checkout.html")){
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const summary = document.getElementById("order-summary");
-  const totalBox = document.getElementById("total-box");
-
-  let totalAll = 0;
-
-  cart.forEach(item=>{
-    const total = item.price * item.quantity;
-    totalAll += total;
-
-    summary.innerHTML += `
-      <div class="item">
-        ${item.name} - ${item.quantity} × ${item.price}$
-      </div>
-    `;
-  });
-
-  totalBox.innerHTML = "المجموع الكلي: " + totalAll + "$";
+  const product = localStorage.getItem("selectedProduct");
+  document.getElementById("product-name").innerText = product;
 }
 
 document.getElementById("order-form")?.addEventListener("submit", function(e){
@@ -59,17 +17,28 @@ document.getElementById("order-form")?.addEventListener("submit", function(e){
   const phone = document.getElementById("phone").value;
   const city = document.getElementById("city").value;
   const address = document.getElementById("address").value;
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const product = localStorage.getItem("selectedProduct");
 
   fetch(SCRIPT_URL,{
     method:"POST",
-    body:JSON.stringify({name,phone,city,address,cart})
+    body:JSON.stringify({
+      name,
+      phone,
+      city,
+      address,
+      product
+    })
   })
   .then(res=>res.json())
   .then(data=>{
     if(data.result==="success"){
-      localStorage.removeItem("cart");
+      localStorage.removeItem("selectedProduct");
       window.location.href="thankyou.html";
+    }else{
+      alert("خطأ في الإرسال");
     }
+  })
+  .catch(()=>{
+    alert("مشكلة في الاتصال");
   });
 });
