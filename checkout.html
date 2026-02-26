@@ -2,21 +2,29 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>إتمام الطلب</title>
+<title>إتمام الطلب - WDZ</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>المنتج:</h2>
-<p id="product-name"></p>
+<section class="checkout-section">
 
-<form id="order-form">
-  <input type="text" id="name" placeholder="الاسم الكامل" required>
-  <input type="text" id="phone" placeholder="رقم الهاتف" required>
-  <input type="text" id="city" placeholder="المدينة" required>
-  <input type="text" id="address" placeholder="العنوان الكامل" required>
-  <button type="submit">إتمام الطلب</button>
-</form>
+  <div class="checkout-box">
+    <h2>إتمام الطلب</h2>
+
+    <p>المنتج:</p>
+    <p id="product-name" style="color:#00ff88;"></p>
+
+    <form id="order-form">
+      <input type="text" id="name" placeholder="الاسم الكامل" required>
+      <input type="text" id="phone" placeholder="رقم الهاتف" required>
+      <input type="text" id="city" placeholder="المدينة" required>
+      <input type="text" id="address" placeholder="العنوان الكامل" required>
+      <button type="submit">تأكيد الطلب</button>
+    </form>
+  </div>
+
+</section>
 
 <script src="main.js"></script>
 </body>
