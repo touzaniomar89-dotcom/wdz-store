@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>WDZ Store</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WDZ Store</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>WDZ Store 🛍️</h1>
+<header>
+  <h1>WDZ Store 🛍</h1>
+</header>
 
-<div class="card">
-  <h2>Cool Sneakers 👟</h2>
-  <p>High quality sneakers</p>
-  <p class="price">$49</p>
-  <a href="product.html">
-    <button>View Product</button>
-  </a>
-</div>
+<section class="products">
 
+  <div class="product-card">
+    <h3>حذاء رياضي</h3>
+    <p>سعر: 49$</p>
+    <button onclick="viewProduct('حذاء رياضي',49)">عرض المنتج</button>
+  </div>
+
+</section>
+
+<script src="main.js"></script>
 </body>
 </html>
