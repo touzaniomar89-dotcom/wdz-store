@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>Product - WDZ Store</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المنتج</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Cool Sneakers 👟</h1>
+<div class="container">
 
-<div class="card">
-  <p>Premium quality sneakers for everyday use.</p>
-  <p class="price">$49</p>
+<h2 id="product-name"></h2>
+<p id="product-price"></p>
 
-  <a href="checkout.html">
-    <button>Buy Now</button>
-  </a>
+<label>المقاس</label>
+<select id="size">
+  <option>40</option>
+  <option>41</option>
+  <option>42</option>
+</select>
 
-  <br><br>
-  <a href="index.html">⬅ Back to Home</a>
+<label>اللون</label>
+<select id="color">
+  <option>أسود</option>
+  <option>أبيض</option>
+</select>
+
+<label>الكمية</label>
+<input type="number" id="quantity" value="1" min="1">
+
+<button onclick="addToCart()">أضف إلى السلة</button>
+
 </div>
 
+<script src="main.js"></script>
 </body>
 </html>
