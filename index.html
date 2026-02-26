@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXARO™ | تجربة مختلفة</title>
+<title>WDZ™ | World of the Death Zone</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -11,8 +11,8 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
 
 body{
-background:linear-gradient(135deg,#0f172a,#1e293b);
-color:#111;
+background:#0a0a0a;
+color:#fff;
 }
 
 .container{
@@ -22,57 +22,59 @@ margin:auto;
 }
 
 header{
-background:#fff;
-padding:18px 0;
-box-shadow:0 5px 20px rgba(0,0,0,0.05);
+padding:20px 0;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 .logo{
-font-size:24px;
+font-size:26px;
 font-weight:800;
-text-align:center;
+letter-spacing:2px;
+}
+
+.logo span{
+color:#ff1e1e;
 }
 
 .hero{
-padding:60px 0;
+padding:80px 0;
 display:flex;
 flex-wrap:wrap;
 align-items:center;
 justify-content:space-between;
-color:#fff;
 }
 
 .hero-text{flex:1;min-width:300px;}
 
 .hero-text h1{
-font-size:40px;
+font-size:42px;
 margin-bottom:20px;
 }
 
 .hero-text p{
-font-size:18px;
-margin-bottom:20px;
-opacity:.9;
+opacity:.8;
+margin-bottom:25px;
 }
 
 .price{
-font-size:30px;
+font-size:32px;
 font-weight:800;
-color:#ff4d4d;
+color:#ff1e1e;
 margin-bottom:10px;
 }
 
 .urgency{
-color:#ffcc00;
+color:#ffaa00;
 font-weight:700;
 margin-bottom:20px;
 }
 
 .btn{
 display:inline-block;
-background:#fff;
-color:#000;
-padding:14px 30px;
+background:#ff1e1e;
+color:#fff;
+padding:15px 35px;
 border-radius:8px;
 text-decoration:none;
 font-weight:700;
@@ -80,7 +82,7 @@ transition:.3s;
 }
 
 .btn:hover{
-transform:translateY(-3px);
+background:#cc0000;
 }
 
 .hero-img{
@@ -92,18 +94,13 @@ text-align:center;
 .hero-img img{
 max-width:100%;
 border-radius:15px;
-box-shadow:0 20px 40px rgba(0,0,0,.4);
+box-shadow:0 20px 50px rgba(255,0,0,.3);
 }
 
 .section{
 padding:70px 0;
 text-align:center;
-background:#f8f9fb;
-}
-
-.section h2{
-font-size:32px;
-margin-bottom:40px;
+background:#111;
 }
 
 .features{
@@ -114,16 +111,13 @@ justify-content:center;
 }
 
 .feature{
-background:#fff;
+background:#1a1a1a;
 padding:25px;
 border-radius:12px;
 width:260px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-font-weight:600;
 }
 
 .reviews{
-background:#fff;
 padding:60px 0;
 text-align:center;
 }
@@ -136,69 +130,62 @@ justify-content:center;
 }
 
 .review{
-background:#f1f5f9;
+background:#1a1a1a;
 padding:20px;
 border-radius:10px;
 width:250px;
 }
 
 .order-box{
-background:#fff;
+background:#111;
 padding:45px;
-border-radius:20px;
+border-radius:15px;
 max-width:550px;
 margin:60px auto;
-box-shadow:0 25px 60px rgba(0,0,0,.25);
-}
-
-.order-box h2{
-font-size:28px;
-margin-bottom:30px;
+box-shadow:0 0 40px rgba(255,0,0,.2);
 }
 
 input{
 width:100%;
 padding:14px;
 margin-bottom:18px;
-border:1px solid #ddd;
-border-radius:10px;
-font-size:15px;
+border:none;
+border-radius:8px;
+background:#1f1f1f;
+color:#fff;
 }
 
 input:focus{
-border-color:#000;
-outline:none;
+outline:2px solid #ff1e1e;
 }
 
 .submit-btn{
 width:100%;
-background:#000;
+background:#ff1e1e;
 color:#fff;
 padding:16px;
 border:none;
-font-size:16px;
-border-radius:12px;
+border-radius:10px;
+font-weight:700;
 cursor:pointer;
-font-weight:600;
 transition:.3s;
 }
 
 .submit-btn:hover{
-background:#111;
+background:#cc0000;
 }
 
 .trust{
 margin-top:20px;
 font-size:14px;
-color:#555;
+opacity:.7;
 text-align:center;
 }
 
 footer{
-background:#111;
-color:#fff;
 padding:25px;
 text-align:center;
+border-top:1px solid rgba(255,255,255,0.1);
 font-size:14px;
 }
 
@@ -220,17 +207,15 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <body>
 
 <header>
-<div class="container">
-<div class="logo">NEXARO™</div>
-</div>
+<div class="logo">WDZ™ <span>World of the Death Zone</span></div>
 </header>
 
 <section class="hero container">
 <div class="hero-text">
-<h1>منتج سيغير تجربتك بالكامل</h1>
-<p>تصميم عصري، جودة عالية، نتائج مضمونة.</p>
+<h1>ادخل إلى المنطقة</h1>
+<p>منتجات قوية، تصميم مختلف، تجربة خارج المألوف.</p>
 <div class="price">199 MAD</div>
-<div class="urgency">الكمية محدودة – العرض ينتهي اليوم</div>
+<div class="urgency">الكمية محدودة – اطلب الآن</div>
 <a href="#order" class="btn">اطلب الآن</a>
 </div>
 <div class="hero-img">
@@ -239,26 +224,26 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 </section>
 
 <section class="section">
-<h2>لماذا تختارنا؟</h2>
+<h2>لماذا WDZ؟</h2>
 <div class="features">
-<div class="feature">جودة ممتازة</div>
-<div class="feature">شحن سريع 24-48 ساعة</div>
-<div class="feature">الدفع عند الاستلام</div>
+<div class="feature">جودة عالية</div>
+<div class="feature">شحن سريع</div>
+<div class="feature">دفع عند الاستلام</div>
 </div>
 </section>
 
 <section class="reviews">
 <h2>آراء العملاء</h2>
 <div class="review-box">
-<div class="review">★★★★★<br>منتج رائع وصل بسرعة!</div>
-<div class="review">★★★★★<br>جودة ممتازة وسعر مناسب.</div>
-<div class="review">★★★★★<br>سأطلب مرة أخرى بالتأكيد.</div>
+<div class="review">★★★★★<br>منتج قوي فعلاً!</div>
+<div class="review">★★★★★<br>أفضل شراء هذا الشهر.</div>
+<div class="review">★★★★★<br>سأطلب مرة أخرى.</div>
 </div>
 </section>
 
 <section id="order">
 <div class="order-box">
-<h2>أكمل طلبك الآن</h2>
+<h2>أكمل طلبك</h2>
 
 <form id="orderForm">
 <input type="text" name="name" placeholder="الاسم الكامل" required>
@@ -266,7 +251,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <input type="text" name="city" placeholder="المدينة" required>
 <input type="text" name="address" placeholder="العنوان الكامل" required>
 
-<input type="hidden" name="product" value="NEXARO Product">
+<input type="hidden" name="product" value="WDZ Product">
 <input type="hidden" name="price" value="199">
 
 <button type="submit" class="submit-btn">تأكيد الطلب</button>
@@ -274,7 +259,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <div class="trust">
 🚚 شحن سريع<br>
 💰 الدفع عند الاستلام<br>
-🔒 بياناتك آمنة 100%
+🔒 بياناتك آمنة
 </div>
 </form>
 
@@ -283,7 +268,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 </section>
 
 <footer>
-© 2026 NEXARO™ - All rights reserved
+© 2026 WDZ™ - All rights reserved
 </footer>
 
 <a href="https://wa.me/212XXXXXXXXX" class="whatsapp">WhatsApp</a>
@@ -291,10 +276,8 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <script>
 document.getElementById("orderForm").addEventListener("submit", function(e){
 e.preventDefault();
-
 const msg=document.getElementById("msg");
 const btn=document.querySelector(".submit-btn");
-
 btn.disabled=true;
 btn.innerText="جاري الإرسال...";
 
@@ -307,13 +290,13 @@ body:JSON.stringify(Object.fromEntries(formData))
 })
 .then(res=>res.text())
 .then(()=>{
-msg.style.color="green";
-msg.innerText="تم تأكيد طلبك بنجاح ✓";
+msg.style.color="lightgreen";
+msg.innerText="تم تأكيد الطلب ✓";
 document.getElementById("orderForm").reset();
 })
 .catch(()=>{
 msg.style.color="red";
-msg.innerText="حدث خطأ حاول مرة أخرى";
+msg.innerText="حدث خطأ";
 });
 
 btn.disabled=false;
