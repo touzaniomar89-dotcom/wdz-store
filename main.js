@@ -1,127 +1,74 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
+const WEB_APP_URL = "PUT_YOUR_WEB_APP_URL_HERE";
 
-/* =========================
-   اختيار المنتج
-========================= */
-
+/* اختيار المنتج */
 function orderProduct(productName){
-  if(!productName || typeof productName !== "string") return;
+  if(!productName) return;
 
-  localStorage.setItem("selectedProduct", productName.trim());
+  localStorage.setItem("selectedProduct", productName);
   window.location.href = "checkout.html";
 }
 
-/* =========================
-   تشغيل الصفحة
-========================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  const productDisplay = document.getElementById("product-name");
+  const productSpan = document.getElementById("product-name");
   const form = document.getElementById("order-form");
+
   const selectedProduct = localStorage.getItem("selectedProduct");
 
-  /* =========================
-     حماية صفحة الدفع
-  ========================= */
-
-  if(productDisplay){
+  /* حماية صفحة الدفع */
+  if(productSpan){
     if(!selectedProduct){
       window.location.href = "index.html";
       return;
     }
-    productDisplay.textContent = selectedProduct;
+    productSpan.textContent = selectedProduct;
   }
 
-  /* =========================
-     إرسال الطلب
-  ========================= */
-
+  /* إرسال الطلب */
   if(form){
 
     form.addEventListener("submit", async function(e){
       e.preventDefault();
 
-      const button = form.querySelector("button[type='submit']");
-      if(button.disabled) return;
-
       const name = document.getElementById("name").value.trim();
       const phone = document.getElementById("phone").value.trim();
-      const city = document.getElementById("city").value.trim();
+      const city = document.getElementById("city").value;
       const address = document.getElementById("address").value.trim();
 
-      /* التحقق من البيانات */
-
       if(!name || !phone || !city || !address){
-        showToast("يرجى ملء جميع الحقول");
-        return;
-      }
-
-      if(!/^[0-9]{9,15}$/.test(phone)){
-        showToast("رقم الهاتف غير صالح");
-        return;
-      }
-
-      if(!selectedProduct){
-        showToast("لا يوجد منتج محدد");
+        alert("يرجى ملء جميع الحقول");
         return;
       }
 
       const data = {
-        name,
-        phone,
-        city,
-        address,
-        product: selectedProduct,
-        orderDate: new Date().toISOString()
+        name: name,
+        phone: phone,
+        city: city,
+        address: address,
+        product: selectedProduct
       };
 
       try{
 
-        button.textContent = "جاري الإرسال...";
-        button.disabled = true;
-
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 15000);
-
-        const response = await fetch(SCRIPT_URL,{
+        const response = await fetch(WEB_APP_URL,{
           method:"POST",
           headers:{
             "Content-Type":"application/json"
           },
-          body:JSON.stringify(data),
-          signal:controller.signal
+          body: JSON.stringify(data)
         });
 
-        clearTimeout(timeout);
-
-        if(!response.ok){
-          throw new Error("فشل الاتصال بالسيرفر");
-        }
-
-        let result;
-
-        try{
-          result = await response.json();
-        }catch{
-          throw new Error("رد غير صالح من السيرفر");
-        }
+        const result = await response.json();
 
         if(result.result === "success"){
           localStorage.removeItem("selectedProduct");
-          form.reset();
           window.location.href = "thankyou.html";
         }else{
-          throw new Error("فشل في تنفيذ السكربت");
+          alert("حدث خطأ في الإرسال");
         }
 
       }catch(error){
-
-        console.error(error);
-        showToast("حدث خطأ في الاتصال. حاول مرة أخرى.");
-        button.textContent = "تأكيد الطلب";
-        button.disabled = false;
-
+        alert("فشل الاتصال بالسيرفر");
       }
 
     });
@@ -129,19 +76,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-
-/* =========================
-   نظام الإشعارات Toast
-========================= */
-
-function showToast(message){
-  const toast = document.getElementById("toast");
-  if(!toast) return;
-
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  setTimeout(()=>{
-    toast.classList.remove("show");
-  },3000);
-}
