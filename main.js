@@ -1,4 +1,4 @@
-const WEB_APP_URL = "PUT_YOUR_WEB_APP_URL_HERE";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
 
 /* اختيار المنتج */
 function orderProduct(productName){
@@ -76,3 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
