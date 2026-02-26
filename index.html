@@ -13,22 +13,33 @@
 body{
 background:#0a0a0a;
 color:#fff;
+overflow-x:hidden;
 }
 
 .container{
 width:90%;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 }
 
+/* HEADER */
 header{
+background:#0d0d0d;
 padding:20px 0;
-text-align:center;
-border-bottom:1px solid rgba(255,255,255,0.1);
+border-bottom:1px solid rgba(255,255,255,0.08);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .logo{
-font-size:26px;
+font-size:24px;
 font-weight:800;
 letter-spacing:2px;
 }
@@ -37,8 +48,27 @@ letter-spacing:2px;
 color:#ff1e1e;
 }
 
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:25px;
+font-weight:600;
+transition:.3s;
+}
+
+nav a:hover{
+color:#ff1e1e;
+}
+
+.nav-btn{
+background:#ff1e1e;
+padding:8px 18px;
+border-radius:6px;
+}
+
+/* HERO */
 .hero{
-padding:80px 0;
+padding:100px 0;
 display:flex;
 flex-wrap:wrap;
 align-items:center;
@@ -48,41 +78,44 @@ justify-content:space-between;
 .hero-text{flex:1;min-width:300px;}
 
 .hero-text h1{
-font-size:42px;
+font-size:44px;
 margin-bottom:20px;
 }
 
 .hero-text p{
-opacity:.8;
+opacity:.85;
 margin-bottom:25px;
+font-size:18px;
 }
 
 .price{
-font-size:32px;
+font-size:34px;
 font-weight:800;
 color:#ff1e1e;
-margin-bottom:10px;
 }
 
 .urgency{
 color:#ffaa00;
+margin:10px 0 20px;
 font-weight:700;
-margin-bottom:20px;
 }
 
 .btn{
 display:inline-block;
 background:#ff1e1e;
 color:#fff;
-padding:15px 35px;
-border-radius:8px;
+padding:16px 40px;
+border-radius:10px;
 text-decoration:none;
 font-weight:700;
 transition:.3s;
+box-shadow:0 0 20px rgba(255,0,0,.5);
 }
 
 .btn:hover{
 background:#cc0000;
+box-shadow:0 0 35px rgba(255,0,0,.9);
+transform:translateY(-4px);
 }
 
 .hero-img{
@@ -93,12 +126,20 @@ text-align:center;
 
 .hero-img img{
 max-width:100%;
-border-radius:15px;
-box-shadow:0 20px 50px rgba(255,0,0,.3);
+border-radius:20px;
+box-shadow:0 20px 60px rgba(255,0,0,.3);
+animation:float 4s ease-in-out infinite;
 }
 
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+/* FEATURES */
 .section{
-padding:70px 0;
+padding:80px 0;
 text-align:center;
 background:#111;
 }
@@ -106,53 +147,64 @@ background:#111;
 .features{
 display:flex;
 flex-wrap:wrap;
-gap:20px;
+gap:25px;
 justify-content:center;
+margin-top:40px;
 }
 
 .feature{
 background:#1a1a1a;
-padding:25px;
-border-radius:12px;
+padding:30px;
+border-radius:15px;
 width:260px;
+transition:.3s;
 }
 
+.feature:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(255,0,0,.2);
+}
+
+/* REVIEWS */
 .reviews{
-padding:60px 0;
+padding:80px 0;
 text-align:center;
 }
 
 .review-box{
 display:flex;
 flex-wrap:wrap;
-gap:20px;
+gap:25px;
 justify-content:center;
+margin-top:40px;
 }
 
 .review{
 background:#1a1a1a;
-padding:20px;
-border-radius:10px;
+padding:25px;
+border-radius:15px;
 width:250px;
 }
 
+/* ORDER */
 .order-box{
 background:#111;
-padding:45px;
-border-radius:15px;
-max-width:550px;
-margin:60px auto;
-box-shadow:0 0 40px rgba(255,0,0,.2);
+padding:50px;
+border-radius:20px;
+max-width:600px;
+margin:80px auto;
+box-shadow:0 0 50px rgba(255,0,0,.2);
 }
 
 input{
 width:100%;
-padding:14px;
+padding:15px;
 margin-bottom:18px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 background:#1f1f1f;
 color:#fff;
+font-size:15px;
 }
 
 input:focus{
@@ -163,16 +215,22 @@ outline:2px solid #ff1e1e;
 width:100%;
 background:#ff1e1e;
 color:#fff;
-padding:16px;
+padding:18px;
 border:none;
-border-radius:10px;
+border-radius:12px;
 font-weight:700;
 cursor:pointer;
 transition:.3s;
+font-size:16px;
 }
 
 .submit-btn:hover{
 background:#cc0000;
+}
+
+.submit-btn:disabled{
+background:#555;
+cursor:not-allowed;
 }
 
 .trust{
@@ -182,20 +240,23 @@ opacity:.7;
 text-align:center;
 }
 
+/* FOOTER */
 footer{
-padding:25px;
+padding:30px;
 text-align:center;
-border-top:1px solid rgba(255,255,255,0.1);
+border-top:1px solid rgba(255,255,255,0.08);
 font-size:14px;
+background:#0d0d0d;
 }
 
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
 left:20px;
 background:#25D366;
 color:#fff;
-padding:14px 18px;
+padding:14px 20px;
 border-radius:50px;
 text-decoration:none;
 font-weight:600;
@@ -207,7 +268,13 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <body>
 
 <header>
-<div class="logo">WDZ™ <span>World of the Death Zone</span></div>
+<div class="container nav">
+<div class="logo">WDZ™ <span>Zone</span></div>
+<nav>
+<a href="#">الرئيسية</a>
+<a href="#order" class="nav-btn">اطلب الآن</a>
+</nav>
+</div>
 </header>
 
 <section class="hero container">
@@ -215,20 +282,20 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <h1>ادخل إلى المنطقة</h1>
 <p>منتجات قوية، تصميم مختلف، تجربة خارج المألوف.</p>
 <div class="price">199 MAD</div>
-<div class="urgency">الكمية محدودة – اطلب الآن</div>
+<div class="urgency">🔥 الكمية محدودة – اطلب الآن</div>
 <a href="#order" class="btn">اطلب الآن</a>
 </div>
 <div class="hero-img">
-<img src="https://via.placeholder.com/450x450" alt="Product">
+<img src="https://via.placeholder.com/500x500" alt="Product">
 </div>
 </section>
 
 <section class="section">
 <h2>لماذا WDZ؟</h2>
 <div class="features">
-<div class="feature">جودة عالية</div>
-<div class="feature">شحن سريع</div>
-<div class="feature">دفع عند الاستلام</div>
+<div class="feature">⚡ جودة عالية</div>
+<div class="feature">🚚 شحن سريع</div>
+<div class="feature">💰 دفع عند الاستلام</div>
 </div>
 </section>
 
@@ -243,7 +310,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 
 <section id="order">
 <div class="order-box">
-<h2>أكمل طلبك</h2>
+<h2 style="text-align:center;margin-bottom:30px;">أكمل طلبك الآن</h2>
 
 <form id="orderForm">
 <input type="text" name="name" placeholder="الاسم الكامل" required>
@@ -259,7 +326,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <div class="trust">
 🚚 شحن سريع<br>
 💰 الدفع عند الاستلام<br>
-🔒 بياناتك آمنة
+🔒 بياناتك آمنة 100%
 </div>
 </form>
 
@@ -268,7 +335,7 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 </section>
 
 <footer>
-© 2026 WDZ™ - All rights reserved
+© 2026 WDZ™ - World of the Death Zone
 </footer>
 
 <a href="https://wa.me/212XXXXXXXXX" class="whatsapp">WhatsApp</a>
@@ -276,14 +343,16 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <script>
 document.getElementById("orderForm").addEventListener("submit", function(e){
 e.preventDefault();
+
 const msg=document.getElementById("msg");
 const btn=document.querySelector(".submit-btn");
+
 btn.disabled=true;
 btn.innerText="جاري الإرسال...";
 
 const formData=new FormData(this);
 
-fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec",{
+fetch("YOUR_GOOGLE_SCRIPT_URL_HERE",{
 method:"POST",
 headers:{"Content-Type":"text/plain;charset=utf-8"},
 body:JSON.stringify(Object.fromEntries(formData))
@@ -291,16 +360,17 @@ body:JSON.stringify(Object.fromEntries(formData))
 .then(res=>res.text())
 .then(()=>{
 msg.style.color="lightgreen";
-msg.innerText="تم تأكيد الطلب ✓";
+msg.innerText="تم تأكيد طلبك بنجاح ✓";
 document.getElementById("orderForm").reset();
+btn.disabled=false;
+btn.innerText="تأكيد الطلب";
 })
 .catch(()=>{
 msg.style.color="red";
-msg.innerText="حدث خطأ";
-});
-
+msg.innerText="حدث خطأ في الإرسال";
 btn.disabled=false;
 btn.innerText="تأكيد الطلب";
+});
 });
 </script>
 
