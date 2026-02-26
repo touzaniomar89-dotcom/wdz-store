@@ -1,47 +1,56 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
 
 /* =========================
-   SELECT PRODUCT
+   اختيار المنتج
 ========================= */
 
 function orderProduct(productName){
-  if(!productName) return;
+  if(!productName || typeof productName !== "string") return;
 
-  localStorage.setItem("selectedProduct", productName);
+  localStorage.setItem("selectedProduct", productName.trim());
   window.location.href = "checkout.html";
 }
 
 /* =========================
-   INIT
+   تشغيل الصفحة
 ========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   const productDisplay = document.getElementById("product-name");
   const form = document.getElementById("order-form");
+  const selectedProduct = localStorage.getItem("selectedProduct");
 
-  /* عرض المنتج */
+  /* =========================
+     حماية صفحة الدفع
+  ========================= */
+
   if(productDisplay){
-    const product = localStorage.getItem("selectedProduct");
-    productDisplay.textContent = product || "منتج غير معروف";
+    if(!selectedProduct){
+      window.location.href = "index.html";
+      return;
+    }
+    productDisplay.textContent = selectedProduct;
   }
 
-  /* إرسال الطلب */
+  /* =========================
+     إرسال الطلب
+  ========================= */
+
   if(form){
 
     form.addEventListener("submit", async function(e){
       e.preventDefault();
 
-      const button = form.querySelector("button");
+      const button = form.querySelector("button[type='submit']");
       if(button.disabled) return;
 
       const name = document.getElementById("name").value.trim();
       const phone = document.getElementById("phone").value.trim();
       const city = document.getElementById("city").value.trim();
       const address = document.getElementById("address").value.trim();
-      const product = localStorage.getItem("selectedProduct");
 
-      /* VALIDATION */
+      /* التحقق من البيانات */
 
       if(!name || !phone || !city || !address){
         showToast("يرجى ملء جميع الحقول");
@@ -53,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if(!product){
+      if(!selectedProduct){
         showToast("لا يوجد منتج محدد");
         return;
       }
@@ -63,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         phone,
         city,
         address,
-        product,
+        product: selectedProduct,
         orderDate: new Date().toISOString()
       };
 
@@ -87,20 +96,28 @@ document.addEventListener("DOMContentLoaded", () => {
         clearTimeout(timeout);
 
         if(!response.ok){
-          throw new Error("Server Error");
+          throw new Error("فشل الاتصال بالسيرفر");
         }
 
-        const result = await response.json();
+        let result;
+
+        try{
+          result = await response.json();
+        }catch{
+          throw new Error("رد غير صالح من السيرفر");
+        }
 
         if(result.result === "success"){
           localStorage.removeItem("selectedProduct");
+          form.reset();
           window.location.href = "thankyou.html";
         }else{
-          throw new Error("Script Failed");
+          throw new Error("فشل في تنفيذ السكربت");
         }
 
       }catch(error){
 
+        console.error(error);
         showToast("حدث خطأ في الاتصال. حاول مرة أخرى.");
         button.textContent = "تأكيد الطلب";
         button.disabled = false;
@@ -114,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================
-   TOAST NOTIFICATION
+   نظام الإشعارات Toast
 ========================= */
 
 function showToast(message){
