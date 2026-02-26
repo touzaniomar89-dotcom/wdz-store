@@ -127,3 +127,111 @@ footer{
   text-align:center;
   border-top:2px solid #00ff88;
 }
+
+/* CHECKOUT PAGE */
+
+.checkout-section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(180deg,#0f0f0f,#1a1a1a);
+  padding:40px;
+}
+
+.checkout-box{
+  background:white;
+  color:black;
+  padding:50px;
+  width:100%;
+  max-width:500px;
+  border-radius:15px;
+  box-shadow:0 0 40px rgba(0,255,136,0.3);
+}
+
+.checkout-box h2{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.checkout-box p{
+  text-align:center;
+  margin-bottom:20px;
+  font-weight:bold;
+}
+
+.checkout-box input{
+  width:100%;
+  padding:15px;
+  margin-bottom:15px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+.checkout-box input:focus{
+  outline:none;
+  border:1px solid #00ff88;
+  box-shadow:0 0 10px rgba(0,255,136,0.4);
+}
+
+.checkout-box button{
+  width:100%;
+  padding:15px;
+  background:#00ff88;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.checkout-box button:hover{
+  background:black;
+  color:white;
+}
+
+
+/* THANK YOU PAGE */
+
+.thankyou-section{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0f0f0f;
+  text-align:center;
+  color:white;
+}
+
+.thankyou-box{
+  background:#1a1a1a;
+  padding:60px;
+  border-radius:20px;
+  box-shadow:0 0 50px rgba(0,255,136,0.4);
+}
+
+.thankyou-box h1{
+  color:#00ff88;
+  margin-bottom:20px;
+  font-size:40px;
+}
+
+.thankyou-box p{
+  color:grey;
+  margin-bottom:30px;
+}
+
+.thankyou-box a{
+  display:inline-block;
+  padding:15px 40px;
+  background:#00ff88;
+  color:black;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.thankyou-box a:hover{
+  background:white;
+}
+
