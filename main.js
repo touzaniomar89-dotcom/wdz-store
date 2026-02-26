@@ -5,6 +5,8 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0Jp
 ========================= */
 
 function orderProduct(productName){
+  if(!productName) return;
+
   localStorage.setItem("selectedProduct", productName);
   window.location.href = "checkout.html";
 }
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productDisplay = document.getElementById("product-name");
   const form = document.getElementById("order-form");
 
-  /* عرض المنتج في صفحة Checkout */
+  /* عرض المنتج */
   if(productDisplay){
     const product = localStorage.getItem("selectedProduct");
     productDisplay.textContent = product || "منتج غير معروف";
@@ -39,22 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const address = document.getElementById("address").value.trim();
       const product = localStorage.getItem("selectedProduct");
 
-      /* =========================
-         VALIDATION
-      ========================= */
+      /* VALIDATION */
 
       if(!name || !phone || !city || !address){
-        alert("يرجى ملء جميع الحقول");
+        showToast("يرجى ملء جميع الحقول");
         return;
       }
 
       if(!/^[0-9]{9,15}$/.test(phone)){
-        alert("رقم الهاتف غير صالح");
+        showToast("رقم الهاتف غير صالح");
         return;
       }
 
       if(!product){
-        alert("لا يوجد منتج محدد");
+        showToast("لا يوجد منتج محدد");
         return;
       }
 
@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
         button.textContent = "جاري الإرسال...";
         button.disabled = true;
 
-        /* Timeout حماية */
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 15000);
 
@@ -102,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }catch(error){
 
-        alert("حدث خطأ في الاتصال. حاول مرة أخرى.");
+        showToast("حدث خطأ في الاتصال. حاول مرة أخرى.");
         button.textContent = "تأكيد الطلب";
         button.disabled = false;
 
@@ -113,6 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+/* =========================
+   TOAST NOTIFICATION
+========================= */
 
 function showToast(message){
   const toast = document.getElementById("toast");
@@ -125,4 +128,3 @@ function showToast(message){
     toast.classList.remove("show");
   },3000);
 }
-
