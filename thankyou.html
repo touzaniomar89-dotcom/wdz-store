@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
 
 body{
-background:#0a0a0a;
+background:radial-gradient(circle at top,#141414,#0a0a0a 60%);
 color:#fff;
 display:flex;
 justify-content:center;
@@ -22,18 +22,25 @@ text-align:center;
 }
 
 .container{
-max-width:600px;
-background:#111;
-padding:50px 30px;
-border-radius:20px;
-box-shadow:0 0 50px rgba(0,255,100,.2);
+max-width:650px;
+background:linear-gradient(145deg,#141414,#0f0f0f);
+padding:60px 40px;
+border-radius:25px;
+box-shadow:0 0 60px rgba(0,255,100,.15);
+animation:fade .6s ease;
+border:1px solid rgba(255,255,255,.05);
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 .success-icon{
-font-size:70px;
+font-size:80px;
 color:#00ff88;
-margin-bottom:20px;
-animation:pop 0.6s ease;
+margin-bottom:25px;
+animation:pop .6s ease;
 }
 
 @keyframes pop{
@@ -43,27 +50,29 @@ animation:pop 0.6s ease;
 
 h2{
 margin-bottom:15px;
-font-size:26px;
+font-size:28px;
 }
 
 p{
-opacity:.8;
-margin-bottom:25px;
+opacity:.85;
+margin-bottom:30px;
+font-size:16px;
 }
 
 .steps{
-background:#1a1a1a;
-padding:20px;
-border-radius:12px;
-margin-bottom:30px;
+background:#181818;
+padding:25px;
+border-radius:15px;
+margin-bottom:35px;
 font-size:14px;
+line-height:1.7;
 }
 
 .btn{
 display:inline-block;
-margin:10px;
-padding:14px 30px;
-border-radius:10px;
+margin:12px;
+padding:16px 35px;
+border-radius:14px;
 text-decoration:none;
 font-weight:700;
 transition:.3s;
@@ -72,27 +81,32 @@ transition:.3s;
 .home-btn{
 background:#ff1e1e;
 color:#fff;
+box-shadow:0 10px 30px rgba(255,0,0,.4);
 }
 
 .home-btn:hover{
-background:#cc0000;
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(255,0,0,.7);
 }
 
 .whatsapp-btn{
 background:#25D366;
 color:#fff;
+box-shadow:0 10px 30px rgba(37,211,102,.4);
 }
 
 .whatsapp-btn:hover{
-background:#1ebe5d;
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(37,211,102,.7);
 }
 
 .upsell{
-margin-top:30px;
-padding:20px;
-background:#1a1a1a;
-border-radius:12px;
+margin-top:35px;
+padding:25px;
+background:#181818;
+border-radius:15px;
 font-size:14px;
+border:1px solid rgba(255,255,255,.05);
 }
 </style>
 </head>
