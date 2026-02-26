@@ -8,288 +8,93 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-/* =========================================
-   WDZ STORE – PREMIUM SHOPIFY STYLE UI
-   (FULL PROFESSIONAL UPGRADE)
-========================================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
 
-/* ---------- ROOT VARIABLES ---------- */
-:root {
-  --black: #0e0e0e;
-  --dark: #1a1a1a;
-  --white: #ffffff;
-  --light: #f7f7f7;
-  --gray: #8c8c8c;
-  --border: #ececec;
-
-  --orange: #ff6a00;
-  --orange-hover: #ff8533;
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-
-  --shadow-soft: 0 4px 15px rgba(0,0,0,0.06);
-  --shadow-medium: 0 10px 30px rgba(0,0,0,0.08);
-  --shadow-hover: 0 20px 45px rgba(0,0,0,0.15);
-
-  --transition: all 0.3s ease;
+body{
+background:#0a0a0a;
+color:#fff;
+display:flex;
+justify-content:center;
+padding:40px 20px;
 }
 
-/* ---------- GLOBAL RESET ---------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.container{
+width:100%;
+max-width:600px;
 }
 
-body {
-  font-family: "Inter", "Segoe UI", sans-serif;
-  background: var(--light);
-  color: var(--black);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+h2,h3{
+margin-bottom:20px;
+text-align:center;
 }
 
-/* ---------- TYPOGRAPHY ---------- */
-h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 20px;
+.card{
+background:#111;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 40px rgba(255,0,0,.15);
+margin-bottom:30px;
 }
 
-h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 25px;
+.product-box{
+background:#1a1a1a;
+padding:20px;
+border-radius:12px;
+margin-top:15px;
 }
 
-h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 10px;
+.product-box p{
+margin-bottom:8px;
 }
 
-p {
-  color: var(--gray);
-  font-size: 0.95rem;
-  margin-bottom: 15px;
+input{
+width:100%;
+padding:15px;
+margin-bottom:18px;
+border:none;
+border-radius:10px;
+background:#1f1f1f;
+color:#fff;
+font-size:15px;
 }
 
-/* ---------- HEADER ---------- */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--black);
-  padding: 20px 60px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+input:focus{
+outline:2px solid #ff1e1e;
 }
 
-header h1,
-header a,
-header nav a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
+button{
+width:100%;
+padding:16px;
+background:#ff1e1e;
+border:none;
+border-radius:12px;
+color:#fff;
+font-weight:700;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
 }
 
-header nav a:hover {
-  color: var(--orange);
+button:hover{
+background:#cc0000;
 }
 
-/* ---------- LAYOUT SPACING ---------- */
-section {
-  padding: 80px 60px;
+button:disabled{
+background:#555;
+cursor:not-allowed;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
+.empty{
+text-align:center;
+font-size:20px;
+margin-top:100px;
 }
 
-/* ---------- BUTTONS ---------- */
-button,
-.btn,
-input[type="submit"] {
-  background: var(--orange);
-  color: var(--white);
-  border: none;
-  padding: 14px 28px;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  box-shadow: var(--shadow-soft);
-}
-
-button:hover,
-.btn:hover,
-input[type="submit"]:hover {
-  background: var(--orange-hover);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* ---------- PRODUCT GRID ---------- */
-.products,
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 35px;
-}
-
-/* ---------- PRODUCT CARD ---------- */
-.product,
-.product-card,
-.card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  box-shadow: var(--shadow-soft);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product:hover,
-.product-card:hover,
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-}
-
-.product img,
-.product-card img {
-  width: 100%;
-  border-radius: var(--radius-md);
-  margin-bottom: 15px;
-}
-
-.price {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--orange);
-  margin: 10px 0;
-}
-
-/* ---------- CART ---------- */
-.cart,
-.cart-sidebar {
-  background: var(--white);
-  padding: 30px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-medium);
-}
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.cart-total {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-top: 25px;
-}
-
-/* ---------- CHECKOUT FORM ---------- */
-form {
-  background: var(--white);
-  padding: 45px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-medium);
-  max-width: 650px;
-  margin: auto;
-}
-
-form input,
-form textarea,
-form select {
-  width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 20px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  font-size: 1rem;
-  transition: var(--transition);
-  background: #fafafa;
-}
-
-form input:focus,
-form textarea:focus,
-form select:focus {
-  border-color: var(--orange);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255,106,0,0.15);
-  background: var(--white);
-}
-
-/* ---------- FOOTER ---------- */
-footer {
-  background: var(--black);
-  color: var(--white);
-  text-align: center;
-  padding: 50px 20px;
-  margin-top: 80px;
-}
-
-/* ---------- LINKS ---------- */
-a {
-  color: var(--orange);
-  transition: var(--transition);
-}
-
-a:hover {
-  opacity: 0.8;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 1024px) {
-  section {
-    padding: 60px 30px;
-  }
-
-  header {
-    padding: 20px 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  h2 {
-    font-size: 1.6rem;
-  }
-
-  section {
-    padding: 50px 20px;
-  }
-
-  button,
-  .btn,
-  input[type="submit"] {
-    width: 100%;
-    text-align: center;
-  }
-
-  .product,
-  .product-card,
-  .card {
-    padding: 18px;
-  }
-
-  form {
-    padding: 30px 20px;
-  }
+.secure{
+text-align:center;
+font-size:13px;
+opacity:.7;
+margin-top:10px;
 }
 </style>
 </head>
@@ -325,98 +130,53 @@ a:hover {
 </div>
 
 <script>
-/* ==============================
-   WDZ V2.0 – Checkout Brain
-================================= */
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const orderInfo = document.getElementById("order-info");
+const formSection = document.getElementById("form-section");
 
-(function(){
-
-const STORAGE="cart";
-const API_URL="https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
-
-function safeCart(){
-try{
-const data=JSON.parse(localStorage.getItem(STORAGE));
-return Array.isArray(data)?data:[];
-}catch{
-return [];
-}
+if(cart.length === 0){
+  document.body.innerHTML = "<div class='empty'>لا يوجد منتج مختار ❌</div>";
+}else{
+  orderInfo.innerHTML =
+    "<p><strong>المنتج:</strong> " + cart[0].name + "</p>" +
+    "<p><strong>السعر:</strong> " + cart[0].price + " درهم</p>";
 }
 
-const cart=safeCart();
-const orderInfo=document.getElementById("order-info");
-const form=document.getElementById("order-form");
-const btn=document.getElementById("submit-btn");
+document.getElementById("order-form").addEventListener("submit", function(e){
+  e.preventDefault();
 
-if(cart.length===0){
-document.body.innerHTML="<div class='empty'>سلتك فارغة ❌</div>";
-return;
-}
+  if(cart.length === 0) return;
 
-function total(){
-return cart.reduce((t,i)=>t+(Number(i.price)*(i.quantity||1)),0);
-}
+  const btn = document.getElementById("submit-btn");
+  btn.disabled = true;
+  btn.innerText = "جاري الإرسال...";
 
-function render(){
-let html="";
-cart.forEach(i=>{
-html+=`
-<p><strong>${i.name}</strong></p>
-<p>السعر: ${i.price} درهم</p>
-<hr style="border:0;border-top:1px solid #333;margin:10px 0;">
-`;
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    city: document.getElementById("city").value,
+    product: cart[0].name,
+    price: cart[0].price
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())
+  .then(() => {
+    localStorage.removeItem("cart");
+    window.location.href = "thankyou.html";
+  })
+  .catch(() => {
+    alert("حدث خطأ أثناء الإرسال ❌");
+    btn.disabled = false;
+    btn.innerText = "تأكيد الطلب";
+  });
 });
-html+=`<p style="font-weight:700;margin-top:10px;">المجموع: ${total()} درهم</p>`;
-orderInfo.innerHTML=html;
-}
-
-render();
-
-function validatePhone(phone){
-return /^0[5-7][0-9]{8}$/.test(phone);
-}
-
-form.addEventListener("submit",async function(e){
-
-e.preventDefault();
-
-const data={
-name:document.getElementById("name").value,
-phone:document.getElementById("phone").value,
-city:document.getElementById("city").value,
-items:cart,
-total:total()
-};
-
-if(!data.name.trim()){alert("الاسم مطلوب");return;}
-if(!validatePhone(data.phone)){alert("رقم غير صحيح");return;}
-if(!data.city.trim()){alert("المدينة مطلوبة");return;}
-
-btn.disabled=true;
-btn.innerText="جاري الإرسال...";
-
-try{
-
-const res=await fetch(API_URL,{
-method:"POST",
-headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify(data)
-});
-
-if(!res.ok) throw new Error();
-
-localStorage.removeItem(STORAGE);
-window.location.href="thankyou.html";
-
-}catch{
-alert("فشل الإرسال ❌ حاول مرة أخرى");
-btn.disabled=false;
-btn.innerText="تأكيد الطلب";
-}
-
-});
-
-})();
 </script>
 
 </body>
