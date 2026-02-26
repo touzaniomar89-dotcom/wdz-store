@@ -42,7 +42,7 @@ document.getElementById("order-form").addEventListener("submit", function(e){
     price: cart[0].price
   };
 
-  fetch("PUT_YOUR_GOOGLE_SCRIPT_URL_HERE", {
+  fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec", {
     method: "POST",
     body: JSON.stringify(data)
   })
