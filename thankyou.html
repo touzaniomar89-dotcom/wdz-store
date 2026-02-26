@@ -2,22 +2,117 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>تم الطلب - WDZ</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تم استلام طلبك | WDZ GLOBAL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Cairo',sans-serif;
+}
+
+body{
+  background:#0f0f0f;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  color:white;
+  padding:20px;
+}
+
+.thankyou-box{
+  background:#1a1a1a;
+  padding:50px 40px;
+  border-radius:25px;
+  text-align:center;
+  max-width:500px;
+  width:100%;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 0 50px rgba(0,240,255,0.08);
+  animation:fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.icon{
+  font-size:60px;
+  color:#00f0ff;
+  margin-bottom:20px;
+}
+
+h1{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+p{
+  color:#ccc;
+  margin-bottom:30px;
+  line-height:1.6;
+}
+
+.order-number{
+  background:#111;
+  padding:12px;
+  border-radius:12px;
+  margin-bottom:25px;
+  font-size:14px;
+  color:#00f0ff;
+}
+
+a{
+  display:inline-block;
+  padding:14px 35px;
+  border-radius:40px;
+  background:#00f0ff;
+  color:black;
+  font-weight:800;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+a:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00f0ff;
+}
+</style>
 </head>
+
 <body>
 
-<section class="thankyou-section">
+<div class="thankyou-box">
 
-  <div class="thankyou-box">
-    <h1>✔ تم استلام طلبك</h1>
-    <p>شكراً لاختيارك WDZ GLOBAL  
-    سيتم التواصل معك قريباً</p>
+<div class="icon">✔</div>
 
-    <a href="index.html">العودة للمتجر</a>
-  </div>
-<div class="thankyou-box fade-in">
-</section>
+<h1>تم استلام طلبك بنجاح</h1>
+
+<p>
+شكراً لاختيارك WDZ GLOBAL  
+سيتم التواصل معك خلال 24 ساعة لتأكيد الطلب.
+</p>
+
+<div class="order-number" id="order-number">
+رقم الطلب: WDZ-0001
+</div>
+
+<a href="index.html">العودة إلى المتجر</a>
+
+</div>
+
+<script>
+// إنشاء رقم طلب عشوائي احترافي
+const randomOrder = "WDZ-" + Math.floor(1000 + Math.random() * 9000);
+document.getElementById("order-number").innerText = "رقم الطلب: " + randomOrder;
+</script>
 
 </body>
 </html>
