@@ -314,3 +314,23 @@ footer{
     0 0 25px #00ff88,
     0 0 50px #00ff88;
 }
+
+.toast{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#00ff88;
+  color:black;
+  padding:15px 30px;
+  border-radius:40px;
+  font-weight:bold;
+  opacity:0;
+  transition:0.4s ease;
+  z-index:9999;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
