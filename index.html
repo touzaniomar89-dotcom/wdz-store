@@ -341,40 +341,75 @@ box-shadow:0 5px 20px rgba(0,0,0,.4);
 <a href="https://wa.me/212XXXXXXXXX" class="whatsapp">WhatsApp</a>
 
 <script>
-document.getElementById("orderForm").addEventListener("submit", function(e){
-e.preventDefault();
+/* ==============================
+   WDZ V2.0 – Landing Brain
+================================= */
 
+(function(){
+
+const API_URL="https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
+
+const form=document.getElementById("orderForm");
 const msg=document.getElementById("msg");
 const btn=document.querySelector(".submit-btn");
+
+function validatePhone(phone){
+return /^0[5-7][0-9]{8}$/.test(phone);
+}
+
+function validate(data){
+if(!data.name.trim()) return "الاسم مطلوب";
+if(!validatePhone(data.phone)) return "رقم هاتف غير صحيح";
+if(!data.city.trim()) return "المدينة مطلوبة";
+if(!data.address.trim()) return "العنوان مطلوب";
+return null;
+}
+
+form.addEventListener("submit",async function(e){
+
+e.preventDefault();
+
+const formData=Object.fromEntries(new FormData(form));
+const error=validate(formData);
+
+if(error){
+msg.style.color="red";
+msg.innerText=error;
+return;
+}
 
 btn.disabled=true;
 btn.innerText="جاري الإرسال...";
 
-const formData=new FormData(this);
+try{
 
-fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec",{
+const res=await fetch(API_URL,{
 method:"POST",
 headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify(Object.fromEntries(formData))
-})
-.then(res=>res.text())
-.then(()=>{
+body:JSON.stringify(formData)
+});
+
+if(!res.ok) throw new Error();
+
 msg.style.color="lightgreen";
 msg.innerText="تم تأكيد طلبك بنجاح ✓";
-document.getElementById("orderForm").reset();
-btn.disabled=false;
-btn.innerText="تأكيد الطلب";
-})
-.catch(()=>{
+form.reset();
+
+}catch{
 msg.style.color="red";
-msg.innerText="حدث خطأ في الإرسال";
+msg.innerText="حدث خطأ أثناء الإرسال";
+}
+
 btn.disabled=false;
 btn.innerText="تأكيد الطلب";
+
 });
-});
+
+})();
 </script>
 
 </body>
 </html>
+
 
 
