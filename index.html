@@ -352,7 +352,7 @@ btn.innerText="جاري الإرسال...";
 
 const formData=new FormData(this);
 
-fetch("YOUR_GOOGLE_SCRIPT_URL_HERE",{
+fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec",{
 method:"POST",
 headers:{"Content-Type":"text/plain;charset=utf-8"},
 body:JSON.stringify(Object.fromEntries(formData))
@@ -376,3 +376,4 @@ btn.innerText="تأكيد الطلب";
 
 </body>
 </html>
+
