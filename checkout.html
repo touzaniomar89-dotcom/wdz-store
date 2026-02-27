@@ -3,26 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WDZ™ | Secure Checkout</title>
-<meta name="theme-color" content="#0a0a0a">
-<meta property="og:title" content="WDZ™ | Secure Checkout">
-<meta property="og:description" content="إتمام طلبك بشكل آمن وسريع مع WDZ™">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_MA">
-<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=WDZ%E2%84%A2+Global+Brand">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>WDZ™ | Secure Checkout</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ff1e1e'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='white'%3EWDZ%3C/text%3E%3C/svg%3E">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
+
 :root{
   --bg:#0B0B0B;
   --bg2:#262b25;
   --accent:#bcfd4c;
-  --neutral:#6e6e6e;
   --text:#FFFFFF;
   --radius:18px;
 }
@@ -32,42 +24,63 @@ background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--
 color:var(--text);
 display:flex;
 justify-content:center;
-padding:50px 20px;
+padding:80px 20px;
+overflow-x:hidden;
 }
 
-.container{width:100%;max-width:720px;}
+.container{width:100%;max-width:820px;}
 
-h2{text-align:center;margin-bottom:30px;font-weight:800}
+.checkout-title{
+text-align:center;
+font-family:'Poppins','Cairo',sans-serif;
+font-weight:800;
+font-size:clamp(28px,4vw,40px);
+margin-bottom:50px;
+background:linear-gradient(180deg,#e9fff6 0%,var(--accent) 55%,#8fe86d 100%);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 20px rgba(188,253,76,.18);
+}
 
 .card{
-background:var(--bg2);
-padding:35px;
-border-radius:18px;
-box-shadow:0 25px 60px rgba(188,253,76,.18);
-margin-bottom:30px;
+background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+padding:40px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.05);
+box-shadow:0 30px 80px rgba(0,0,0,.6);
+margin-bottom:40px;
+transition:.4s cubic-bezier(.22,1,.36,1);
+}
+
+.card:hover{
+box-shadow:0 50px 120px rgba(0,0,0,.8),
+0 0 40px rgba(188,253,76,.15);
 }
 
 .summary{
 background:#161616;
 padding:20px;
-border-radius:12px;
-margin-top:15px;
-line-height:1.8;
+border-radius:14px;
+margin-top:20px;
+line-height:1.9;
 }
 
-input,select,textarea{
+input,select{
 width:100%;
-padding:15px;
+padding:16px;
 margin-bottom:18px;
-border:none;
 border-radius:14px;
+border:1px solid rgba(255,255,255,.06);
 background:#161616;
 color:var(--text);
 font-size:15px;
+transition:.3s;
 }
 
-input:focus,select:focus,textarea:focus{
-outline:2px solid var(--accent);
+input:focus,select:focus{
+outline:none;
+border-color:var(--accent);
+box-shadow:0 0 20px rgba(188,253,76,.25);
 }
 
 button{
@@ -80,35 +93,46 @@ color:#0B0B0B;
 font-weight:700;
 font-size:16px;
 cursor:pointer;
-transition:.3s;
+transition:.35s cubic-bezier(.22,1,.36,1);
+box-shadow:0 0 25px rgba(188,253,76,.35);
 }
 
-button:hover{filter:saturate(120%);}
-button:disabled{background:#555;}
+button:hover{
+transform:translateY(-4px);
+box-shadow:0 25px 45px rgba(188,253,76,.25);
+}
+
+button:disabled{
+background:#555;
+box-shadow:none;
+}
 
 .total{
-font-size:20px;
+font-size:22px;
 font-weight:800;
 color:var(--accent);
-margin-top:10px;
+margin-top:15px;
 }
 
 .trust{
 text-align:center;
 font-size:13px;
 opacity:.7;
-margin-top:15px;
-line-height:1.7;
+margin-top:20px;
+line-height:1.8;
 }
 
-.empty{
-text-align:center;
-font-size:20px;
-margin-top:120px;
-}
-</style>
-<style>
 input#phone{direction:ltr;text-align:left}
+
+.reveal{
+opacity:0;
+transform:translateY(30px);
+transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
 </style>
 </head>
 
@@ -116,24 +140,27 @@ input#phone{direction:ltr;text-align:left}
 
 <div class="container">
 
-<h2>إتمام الطلب الآمن</h2>
+<h2 class="checkout-title reveal">إتمام الطلب الآمن</h2>
 
-<div id="summary-card" class="card">
+<div id="summary-card" class="card reveal">
 <h3>ملخص الطلب</h3>
 <div id="order-summary" class="summary"></div>
-<div style="display:flex;justify-content:space-between;margin-top:10px"><span>المجموع الفرعي</span><strong id="co-sub">0 MAD</strong></div>
-<div style="display:flex;justify-content:space-between;margin-top:6px"><span>الشحن</span><strong id="co-ship">30 MAD</strong></div>
+<div style="display:flex;justify-content:space-between;margin-top:15px">
+<span>المجموع الفرعي</span><strong id="co-sub">0 MAD</strong>
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:6px">
+<span>الشحن</span><strong id="co-ship">30 MAD</strong>
+</div>
 <div class="total" id="total-price"></div>
 </div>
 
-<div class="card">
-<h3>معلومات العميل</h3>
+<div class="card reveal">
+<h3 style="margin-bottom:25px">معلومات العميل</h3>
 
 <form id="checkout-form">
 
 <input type="text" id="name" placeholder="الاسم الكامل" required>
-<input type="tel" id="phone" placeholder="رقم الهاتف" required inputmode="numeric" autocomplete="tel" maxlength="16">
-<small id="phone-help" style="display:block;opacity:.7;margin-top:-10px;margin-bottom:12px;font-size:12px">يدعم: 0XXXXXXXXX أو +212XXXXXXXXX أو 212XXXXXXXXX — يتم التحويل تلقائيًا.</small>
+<input type="tel" id="phone" placeholder="رقم الهاتف" required maxlength="16">
 
 <select id="city" required>
 <option value="">اختر المدينة</option>
@@ -148,14 +175,8 @@ input#phone{direction:ltr;text-align:left}
 
 <input type="text" id="address" placeholder="العنوان الكامل" required>
 
-<!-- quantity selection removed per request -->
-
-<!-- color selection removed per request -->
-
-<!-- note removed per request -->
-
 <button type="submit" id="submit-btn">تأكيد الطلب</button>
-<p id="msg" style="text-align:center;margin-top:10px;"></p>
+<p id="msg" style="text-align:center;margin-top:12px;"></p>
 
 <div class="trust">
 🚚 توصيل سريع 24-72 ساعة<br>
@@ -169,31 +190,12 @@ input#phone{direction:ltr;text-align:left}
 </div>
 
 <script>
+const SHIPPING_COST = 30;
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const summary = document.getElementById("order-summary");
 const totalPrice = document.getElementById("total-price");
 const summaryCard = document.getElementById("summary-card");
 const msg = document.getElementById("msg");
-const SHIPPING_COST = 30;
-const phoneEl = document.getElementById("phone");
-function normalizePhone(v){
-  const digits = String(v).replace(/[^\d]/g,'');
-  if(digits.startsWith('212') && digits.length >= 12){
-    return '0' + digits.slice(3,12);
-  }
-  if(digits.startsWith('0') && digits.length >= 10){
-    return digits.slice(0,10);
-  }
-  return digits;
-}
-phoneEl.addEventListener("input", function(){
-  this.value = this.value.replace(/[^\d+]/g,'').slice(0,16);
-});
-phoneEl.addEventListener("blur", function(){
-  const n = normalizePhone(this.value);
-  if(/^0\d{9}$/.test(n)){ this.value = n; document.getElementById('phone-help').style.color=''; }
-  else { document.getElementById('phone-help').style.color='#ff6b6b'; }
-});
 
 if(cart.length === 0){
   summaryCard.style.display = "none";
@@ -203,77 +205,24 @@ if(cart.length === 0){
     const q = item.qty || 1;
     const line = item.price * q;
     sub += line;
-    return `<div style="display:flex;justify-content:space-between"><span>${item.name} × ${q}</span><strong>${line} MAD</strong></div>`;
+    return `<div style="display:flex;justify-content:space-between">
+    <span>${item.name} × ${q}</span>
+    <strong>${line} MAD</strong>
+    </div>`;
   }).join("");
   document.getElementById("co-sub").innerText = sub + " MAD";
-  document.getElementById("co-ship").innerText = (cart.length?SHIPPING_COST:0) + " MAD";
-  totalPrice.innerText = "الإجمالي: " + (sub + (cart.length?SHIPPING_COST:0)) + " MAD";
+  document.getElementById("co-ship").innerText = SHIPPING_COST + " MAD";
+  totalPrice.innerText = "الإجمالي: " + (sub + SHIPPING_COST) + " MAD";
 }
 
-// total calculation simplified to single unit
-
-document.getElementById("checkout-form").addEventListener("submit", function(e){
-e.preventDefault();
-
-if(cart.length === 0) return;
-
-const btn = document.getElementById("submit-btn");
-btn.disabled = true;
-btn.innerText = "جاري المعالجة...";
-
-const now = new Date();
-const dateStr = now.toLocaleString("ar-MA", {hour12:false});
-
-// product and total (fallbacks if no cart)
-const productName = (cart.length ? cart.map(i=>`${i.name}×${i.qty||1}`).join(", ") : "WDZ Direct Order");
-const totalValue = (cart.length ? cart.reduce((a,i)=>a+(i.price*(i.qty||1)),0) + SHIPPING_COST : 0);
-
-const normalizedPhone = normalizePhone(document.getElementById("phone").value);
-if(!/^0\d{9}$/.test(normalizedPhone)){
-  msg.style.color="orange";
-  msg.innerText="تحقق من رقم الهاتف: أدخل 0 متبوعًا بـ 9 أرقام أو +212/212 وسيتم التحويل تلقائيًا";
-  btn.disabled=false;
-  btn.innerText="تأكيد الطلب";
-  return;
-}
-
-const data = {
-  name: document.getElementById("name").value,
-  phone: normalizedPhone,
-  city: document.getElementById("city").value,
-  address: document.getElementById("address").value,
-  date: dateStr,
-  product: productName,
-  total: totalValue
-};
-
-fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec",{
-method:"POST",
-headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify(data)
-})
-.then(res=>res.text())
-.then(()=>{
-localStorage.removeItem("cart");
-window.location.href="thankyou.html";
-})
-.catch(()=>{
-msg.style.color="red";
-msg.innerText="حدث خطأ أثناء الإرسال";
-btn.disabled=false;
-btn.innerText="تأكيد الطلب";
+// reveal animation
+const elements=document.querySelectorAll(".reveal");
+const io=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add("show")}
 });
-});
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "WDZ™ Global Brand",
-  "brand": "WDZ",
-  "logo": "https://via.placeholder.com/256x256.png?text=WDZ",
-  "sameAs": []
-}
+},{threshold:.15});
+elements.forEach(el=>io.observe(el));
 </script>
 
 </body>
