@@ -132,7 +132,8 @@ input#phone{direction:ltr;text-align:left}
 <form id="checkout-form">
 
 <input type="text" id="name" placeholder="الاسم الكامل" required>
-<input type="tel" id="phone" placeholder="رقم الهاتف" required inputmode="numeric" autocomplete="tel" pattern="^0\\d{9}$" minlength="10" maxlength="10" title="أدخل رقم مغربي صحيح: يبدأ بـ 0 ويتبعه 9 أرقام">
+<input type="tel" id="phone" placeholder="رقم الهاتف" required inputmode="numeric" autocomplete="tel" maxlength="16">
+<small id="phone-help" style="display:block;opacity:.7;margin-top:-10px;margin-bottom:12px;font-size:12px">يدعم: 0XXXXXXXXX أو +212XXXXXXXXX أو 212XXXXXXXXX — يتم التحويل تلقائيًا.</small>
 
 <select id="city" required>
 <option value="">اختر المدينة</option>
@@ -175,8 +176,23 @@ const summaryCard = document.getElementById("summary-card");
 const msg = document.getElementById("msg");
 const SHIPPING_COST = 30;
 const phoneEl = document.getElementById("phone");
+function normalizePhone(v){
+  const digits = String(v).replace(/[^\d]/g,'');
+  if(digits.startsWith('212') && digits.length >= 12){
+    return '0' + digits.slice(3,12);
+  }
+  if(digits.startsWith('0') && digits.length >= 10){
+    return digits.slice(0,10);
+  }
+  return digits;
+}
 phoneEl.addEventListener("input", function(){
-  this.value = this.value.replace(/[^0-9]/g,'').slice(0,10);
+  this.value = this.value.replace(/[^\d+]/g,'').slice(0,16);
+});
+phoneEl.addEventListener("blur", function(){
+  const n = normalizePhone(this.value);
+  if(/^0\d{9}$/.test(n)){ this.value = n; document.getElementById('phone-help').style.color=''; }
+  else { document.getElementById('phone-help').style.color='#ff6b6b'; }
 });
 
 if(cart.length === 0){
@@ -212,9 +228,18 @@ const dateStr = now.toLocaleString("ar-MA", {hour12:false});
 const productName = (cart.length ? cart.map(i=>`${i.name}×${i.qty||1}`).join(", ") : "WDZ Direct Order");
 const totalValue = (cart.length ? cart.reduce((a,i)=>a+(i.price*(i.qty||1)),0) + SHIPPING_COST : 0);
 
+const normalizedPhone = normalizePhone(document.getElementById("phone").value);
+if(!/^0\d{9}$/.test(normalizedPhone)){
+  msg.style.color="orange";
+  msg.innerText="تحقق من رقم الهاتف: أدخل 0 متبوعًا بـ 9 أرقام أو +212/212 وسيتم التحويل تلقائيًا";
+  btn.disabled=false;
+  btn.innerText="تأكيد الطلب";
+  return;
+}
+
 const data = {
   name: document.getElementById("name").value,
-  phone: document.getElementById("phone").value,
+  phone: normalizedPhone,
   city: document.getElementById("city").value,
   address: document.getElementById("address").value,
   date: dateStr,
