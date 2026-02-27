@@ -265,6 +265,17 @@ font-size:14px;
 <style>
 @media (max-width: 640px){
   #cartDrawer{width:100%;}
+  header{padding:12px 0;}
+  .nav{gap:10px;flex-wrap:wrap;}
+  nav a{margin-left:12px;}
+  .nav-btn{padding:10px 14px;font-size:14px}
+  .cart-btn{padding:8px 12px}
+  .hero{padding:60px 0}
+  .display-title{font-size:clamp(28px,8vw,42px);letter-spacing:1px}
+  .hero-text p{font-size:16px}
+  .btn{width:100%;text-align:center;padding:16px}
+  .btn-outline{margin-top:10px}
+  .features .feature{width:100%;max-width:340px}
 }
 </style>
 <style>
@@ -429,6 +440,17 @@ updateCounter();
 // expose cart for checkout
 function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart', JSON.stringify(items.map(i=>({name:i.name,price:i.price,qty:i.qty,img:i.img})))); }
 window.addEventListener('beforeunload',exportCartToSimple);
+</script>
+<script>
+// ensure navbar "اطلب الآن" uses current cart then navigates
+const navShop=document.querySelector('a.nav-btn[href="checkout.html"]');
+if(navShop){
+  navShop.addEventListener('click',function(e){
+    e.preventDefault();
+    exportCartToSimple();
+    window.location.href='checkout.html';
+  });
+}
 </script>
 <script>
 // navbar blur on scroll + reveal fade-ins
