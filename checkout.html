@@ -10,128 +10,56 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
-
 :root{
   --bg:#0B0B0B;
-  --bg2:#262b25;
   --accent:#bcfd4c;
   --text:#FFFFFF;
-  --radius:18px;
 }
-
 body{
 background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
 color:var(--text);
 display:flex;
 justify-content:center;
 padding:80px 20px;
-overflow-x:hidden;
 }
-
 .container{width:100%;max-width:820px;}
-
 .checkout-title{
 text-align:center;
-font-family:'Poppins','Cairo',sans-serif;
 font-weight:800;
-font-size:clamp(28px,4vw,40px);
-margin-bottom:50px;
-background:linear-gradient(180deg,#e9fff6 0%,var(--accent) 55%,#8fe86d 100%);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 0 20px rgba(188,253,76,.18);
+font-size:32px;
+margin-bottom:40px;
+color:var(--accent);
 }
-
 .card{
-background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+background:#161616;
 padding:40px;
 border-radius:20px;
-border:1px solid rgba(255,255,255,.05);
-box-shadow:0 30px 80px rgba(0,0,0,.6);
 margin-bottom:40px;
-transition:.4s cubic-bezier(.22,1,.36,1);
 }
-
-.card:hover{
-box-shadow:0 50px 120px rgba(0,0,0,.8),
-0 0 40px rgba(188,253,76,.15);
-}
-
-.summary{
-background:#161616;
-padding:20px;
-border-radius:14px;
-margin-top:20px;
-line-height:1.9;
-}
-
+.summary{margin-top:20px;line-height:1.9;}
 input,select{
 width:100%;
-padding:16px;
+padding:14px;
 margin-bottom:18px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.06);
-background:#161616;
-color:var(--text);
-font-size:15px;
-transition:.3s;
+border-radius:12px;
+border:1px solid #333;
+background:#111;
+color:white;
 }
-
-input:focus,select:focus{
-outline:none;
-border-color:var(--accent);
-box-shadow:0 0 20px rgba(188,253,76,.25);
-}
-
 button{
 width:100%;
-padding:18px;
+padding:16px;
 background:var(--accent);
 border:none;
-border-radius:14px;
-color:#0B0B0B;
+border-radius:12px;
 font-weight:700;
-font-size:16px;
 cursor:pointer;
-transition:.35s cubic-bezier(.22,1,.36,1);
-box-shadow:0 0 25px rgba(188,253,76,.35);
 }
-
-button:hover{
-transform:translateY(-4px);
-box-shadow:0 25px 45px rgba(188,253,76,.25);
-}
-
-button:disabled{
-background:#555;
-box-shadow:none;
-}
-
 .total{
-font-size:22px;
+font-size:20px;
 font-weight:800;
 color:var(--accent);
 margin-top:15px;
-}
-
-.trust{
-text-align:center;
-font-size:13px;
-opacity:.7;
-margin-top:20px;
-line-height:1.8;
-}
-
-input#phone{direction:ltr;text-align:left}
-
-.reveal{
-opacity:0;
-transform:translateY(30px);
-transition:opacity .7s ease, transform .7s ease;
-}
-.reveal.show{
-opacity:1;
-transform:translateY(0);
 }
 </style>
 </head>
@@ -140,9 +68,9 @@ transform:translateY(0);
 
 <div class="container">
 
-<h2 class="checkout-title reveal">إتمام الطلب الآمن</h2>
+<h2 class="checkout-title">إتمام الطلب الآمن</h2>
 
-<div id="summary-card" class="card reveal">
+<div id="summary-card" class="card">
 <h3>ملخص الطلب</h3>
 <div id="order-summary" class="summary"></div>
 <div style="display:flex;justify-content:space-between;margin-top:15px">
@@ -154,14 +82,13 @@ transform:translateY(0);
 <div class="total" id="total-price"></div>
 </div>
 
-<div class="card reveal">
+<div class="card">
 <h3 style="margin-bottom:25px">معلومات العميل</h3>
 
 <form id="checkout-form">
 
 <input type="text" id="name" placeholder="الاسم الكامل" required>
-<input type="tel" id="phone" placeholder="رقم الهاتف" required maxlength="16">
-
+<input type="tel" id="phone" placeholder="رقم الهاتف" required>
 <select id="city" required>
 <option value="">اختر المدينة</option>
 <option>الدار البيضاء</option>
@@ -172,17 +99,10 @@ transform:translateY(0);
 <option>أكادير</option>
 <option>بني ملال</option>
 </select>
-
 <input type="text" id="address" placeholder="العنوان الكامل" required>
 
 <button type="submit" id="submit-btn">تأكيد الطلب</button>
 <p id="msg" style="text-align:center;margin-top:12px;"></p>
-
-<div class="trust">
-🚚 توصيل سريع 24-72 ساعة<br>
-💰 الدفع عند الاستلام<br>
-🔒 تشفير بيانات متقدم
-</div>
 
 </form>
 </div>
@@ -191,38 +111,73 @@ transform:translateY(0);
 
 <script>
 const SHIPPING_COST = 30;
+const scriptURL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
+
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const summary = document.getElementById("order-summary");
 const totalPrice = document.getElementById("total-price");
 const summaryCard = document.getElementById("summary-card");
 const msg = document.getElementById("msg");
 
+let subtotal = 0;
+
 if(cart.length === 0){
   summaryCard.style.display = "none";
 }else{
-  let sub = 0;
   summary.innerHTML = cart.map(item=>{
     const q = item.qty || 1;
     const line = item.price * q;
-    sub += line;
+    subtotal += line;
     return `<div style="display:flex;justify-content:space-between">
     <span>${item.name} × ${q}</span>
     <strong>${line} MAD</strong>
     </div>`;
   }).join("");
-  document.getElementById("co-sub").innerText = sub + " MAD";
-  document.getElementById("co-ship").innerText = SHIPPING_COST + " MAD";
-  totalPrice.innerText = "الإجمالي: " + (sub + SHIPPING_COST) + " MAD";
+
+  document.getElementById("co-sub").innerText = subtotal + " MAD";
+  totalPrice.innerText = "الإجمالي: " + (subtotal + SHIPPING_COST) + " MAD";
 }
 
-// reveal animation
-const elements=document.querySelectorAll(".reveal");
-const io=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add("show")}
+document.getElementById("checkout-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if(cart.length === 0){
+        msg.style.color = "red";
+        msg.innerText = "السلة فارغة!";
+        return;
+    }
+
+    const btn = document.getElementById("submit-btn");
+    btn.disabled = true;
+    btn.innerText = "جاري الإرسال...";
+
+    const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        city: document.getElementById("city").value,
+        address: document.getElementById("address").value,
+        product: cart.map(i => i.name + " x" + (i.qty || 1)).join(" | "),
+        price: subtotal + SHIPPING_COST
+    };
+
+    fetch(scriptURL,{
+        method:"POST",
+        body:JSON.stringify(data),
+        headers:{"Content-Type":"application/json"}
+    })
+    .then(res=>res.text())
+    .then(()=>{
+        localStorage.removeItem("cart");
+        window.location.href="thankyou.html";
+    })
+    .catch(err=>{
+        console.error(err);
+        msg.style.color="red";
+        msg.innerText="حدث خطأ أثناء إرسال الطلب.";
+        btn.disabled=false;
+        btn.innerText="تأكيد الطلب";
+    });
 });
-},{threshold:.15});
-elements.forEach(el=>io.observe(el));
 </script>
 
 </body>
