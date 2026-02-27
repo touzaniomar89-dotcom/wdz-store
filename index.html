@@ -30,7 +30,10 @@
   --radius:18px;
   --shadow:0 20px 60px rgba(188,253,76,.18);
 }
-
+body{
+opacity:0;
+transition:opacity .4s ease;
+}
 body{
 background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
 color:var(--text);
@@ -88,7 +91,31 @@ flex-wrap:wrap;
 align-items:center;
 justify-content:space-between;
 }
+.hero{
+position:relative;
+overflow:hidden;
+}
 
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at 30% 40%, rgba(255,255,255,.04), transparent 60%);
+pointer-events:none;
+}
+
+.hero-img{
+perspective:1200px;
+}
+
+.hero-img img{
+transition:transform .6s ease, box-shadow .6s ease;
+}
+
+.hero-img img:hover{
+transform:rotateY(8deg) rotateX(4deg) scale(1.05);
+}
+  
 .hero-text{flex:1;min-width:300px;}
 .hero-text h1{font-size:54px;line-height:1.15;margin-bottom:18px;font-weight:800;}
 .hero-text h1 .accent{color:var(--accent);}
@@ -197,6 +224,22 @@ transition:.3s ease;
 transform:translateY(-6px);
 box-shadow:0 25px 60px rgba(103,248,29,.18), inset 0 0 0 1px rgba(103,248,29,.35);
 }
+  .feature{
+transition:transform .4s ease, box-shadow .4s ease;
+}
+
+.feature:hover{
+transform:translateY(-10px) scale(1.03);
+}
+
+.feature img{
+transition:transform .6s ease;
+}
+
+.feature:hover img{
+transform:scale(1.08);
+}
+  
 .std-icon{
 width:40px;height:40px;border-radius:999px;
 display:inline-flex;align-items:center;justify-content:center;
@@ -354,8 +397,8 @@ input[name="phone"]{direction:ltr;text-align:left}
 <h2>WDZ™ Standards</h2>
 <div class="features">
 <div class="feature standard"><span class="std-icon">💳</span><span class="std-label">Cash On Delivery</span></div>
-<div class="feature standard"><span class="std-icon">�</span><span class="std-label">Fast Nationwide Shipping</span></div>
-<div class="feature standard"><span class="std-icon">�</span><span class="std-label">Secure Data Encryption</span></div>
+<div class="feature standard"><span class="std-icon"> </span><span class="std-label">Fast Nationwide Shipping</span></div>
+<div class="feature standard"><span class="std-icon"> </span><span class="std-label">Secure Data Encryption</span></div>
 <div class="feature standard"><span class="std-icon">🌍</span><span class="std-label">Global Quality Control</span></div>
 </div>
 </section>
@@ -487,6 +530,24 @@ document.querySelectorAll('.reveal').forEach(el=>{ el.style.opacity='0'; el.styl
   }
 }
 </script>
+<script>
+document.querySelectorAll("a").forEach(link=>{
+if(link.href.includes(".html")){
+link.addEventListener("click",function(e){
+e.preventDefault();
+document.body.style.opacity="0";
+document.body.style.transition="opacity .4s ease";
+setTimeout(()=>{
+window.location=this.href;
+},400);
+});
+}
+});
 
-</body>
+window.addEventListener("load",()=>{
+document.body.style.opacity="1";
+});
+</script>
+
+  </body>
 </html>
