@@ -89,6 +89,7 @@ margin-top:15px;
 
 <input type="text" id="name" placeholder="الاسم الكامل" required>
 <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+
 <select id="city" required>
 <option value="">اختر المدينة</option>
 <option>الدار البيضاء</option>
@@ -99,6 +100,7 @@ margin-top:15px;
 <option>أكادير</option>
 <option>بني ملال</option>
 </select>
+
 <input type="text" id="address" placeholder="العنوان الكامل" required>
 
 <button type="submit" id="submit-btn">تأكيد الطلب</button>
@@ -111,6 +113,7 @@ margin-top:15px;
 
 <script>
 const SHIPPING_COST = 30;
+
 const scriptURL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -162,16 +165,17 @@ document.getElementById("checkout-form").addEventListener("submit", function(e){
 
     fetch(scriptURL,{
         method:"POST",
-        body:JSON.stringify(data),
-        headers:{"Content-Type":"application/json"}
+        mode:"no-cors",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
     })
-    .then(res=>res.text())
     .then(()=>{
         localStorage.removeItem("cart");
         window.location.href="thankyou.html";
     })
-    .catch(err=>{
-        console.error(err);
+    .catch(()=>{
         msg.style.color="red";
         msg.innerText="حدث خطأ أثناء إرسال الطلب.";
         btn.disabled=false;
