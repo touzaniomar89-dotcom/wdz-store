@@ -4,15 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WDZ™ | Order Confirmed</title>
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="WDZ™ | تأكيد الطلب">
+<meta property="og:description" content="تم استلام طلبك بنجاح. فريق WDZ™ سيتواصل معك قريبًا.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_MA">
+<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=WDZ%E2%84%A2+Global+Brand">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ff1e1e'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='white'%3EWDZ%3C/text%3E%3C/svg%3E">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
+:root{
+  --bg:#0B0B0B;
+  --bg2:#262b25;
+  --accent:#bcfd4c;
+  --neutral:#6e6e6e;
+  --text:#FFFFFF;
+  --radius:18px;
+}
 
 body{
-background:#0a0a0a;
-color:#fff;
+background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
+color:var(--text);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -23,15 +40,15 @@ text-align:center;
 
 .container{
 max-width:650px;
-background:#111;
+background:var(--bg2);
 padding:60px 35px;
 border-radius:22px;
-box-shadow:0 0 60px rgba(0,255,120,.15);
+box-shadow:0 25px 60px rgba(188,253,76,.18);
 }
 
 .success-icon{
 font-size:75px;
-color:#00ff88;
+color:var(--accent);
 margin-bottom:25px;
 animation:pop .5s ease;
 }
@@ -53,7 +70,7 @@ font-size:16px;
 }
 
 .steps{
-background:#1a1a1a;
+background:#161616;
 padding:22px;
 border-radius:14px;
 margin-bottom:35px;
@@ -72,12 +89,12 @@ transition:.3s;
 }
 
 .home-btn{
-background:#ff1e1e;
-color:#fff;
+background:var(--accent);
+color:#0B0B0B;
 }
 
 .home-btn:hover{
-background:#cc0000;
+filter:saturate(120%);
 }
 
 .whatsapp-btn{
@@ -89,25 +106,22 @@ color:#fff;
 background:#1ebe5d;
 }
 
-.upsell{
-margin-top:40px;
-padding:25px;
-background:#1a1a1a;
-border-radius:15px;
-font-size:15px;
-}
-
-.upsell h3{
-margin-bottom:12px;
-font-size:18px;
-color:#ff1e1e;
-}
-
-.timer{
-margin-top:10px;
+.timer{display:none}
+.back-home-float{
+position:fixed;
+right:24px;
+bottom:24px;
+background:var(--accent);
+color:#0B0B0B;
+padding:12px 16px;
+border-radius:10px;
+text-decoration:none;
 font-weight:700;
-color:#ffaa00;
+box-shadow:0 10px 30px rgba(188,253,76,.25);
+transition:.2s;
+z-index:1000;
 }
+.back-home-float:hover{filter:saturate(120%);transform:translateY(-2px)}
 </style>
 </head>
 
@@ -135,36 +149,27 @@ color:#ffaa00;
 العودة للمتجر
 </a>
 
-<div class="upsell">
-<h3>Upgrade Your Order</h3>
-<p>
-أضف قطعة إضافية الآن بخصم 25% قبل أن يتم تأكيد الاتصال.
-العرض متاح لفترة محدودة فقط.
-</p>
-
-<a href="https://wa.me/212XXXXXXXXX?text=أريد إضافة قطعة أخرى إلى طلبي WDZ" 
-class="btn whatsapp-btn">
-إضافة قطعة بخصم
-</a>
-
-<div class="timer" id="countdown">
-العرض ينتهي خلال: 10:00
-</div>
-</div>
+<!-- upsell removed per request -->
 
 </div>
 
+<a href="index.html" class="back-home-float">Back to Home</a>
+
+<!-- countdown script removed -->
 <script>
-let time = 600;
-const countdown = document.getElementById("countdown");
-
-setInterval(()=>{
-let minutes = Math.floor(time / 60);
-let seconds = time % 60;
-seconds = seconds < 10 ? "0" + seconds : seconds;
-countdown.innerText = "العرض ينتهي خلال: " + minutes + ":" + seconds;
-if(time > 0){ time--; }
-},1000);
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){ window.location.href="index.html"; }
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "WDZ™ Global Brand",
+  "brand": "WDZ",
+  "logo": "https://via.placeholder.com/256x256.png?text=WDZ",
+  "sameAs": []
+}
 </script>
 
 </body>
