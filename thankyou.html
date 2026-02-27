@@ -3,32 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WDZ™ | Order Confirmed</title>
-<meta name="theme-color" content="#0a0a0a">
-<meta property="og:title" content="WDZ™ | تأكيد الطلب">
-<meta property="og:description" content="تم استلام طلبك بنجاح. فريق WDZ™ سيتواصل معك قريبًا.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_MA">
-<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=WDZ%E2%84%A2+Global+Brand">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ff1e1e'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='white'%3EWDZ%3C/text%3E%3C/svg%3E">
+<title>WDZ™ | Order Confirmed</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
+
 :root{
   --bg:#0B0B0B;
   --bg2:#262b25;
   --accent:#bcfd4c;
-  --neutral:#6e6e6e;
   --text:#FFFFFF;
-  --radius:18px;
 }
 
 body{
-background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
+background:radial-gradient(1000px 500px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
 color:var(--text);
 display:flex;
 justify-content:center;
@@ -36,65 +27,120 @@ align-items:center;
 min-height:100vh;
 padding:20px;
 text-align:center;
+overflow:hidden;
+}
+
+/* soft glow background effect */
+body::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,rgba(188,253,76,.08),transparent 70%);
+filter:blur(80px);
+top:-200px;
+right:-200px;
+z-index:-1;
 }
 
 .container{
-max-width:650px;
-background:var(--bg2);
-padding:60px 35px;
-border-radius:22px;
-box-shadow:0 25px 60px rgba(188,253,76,.18);
+max-width:720px;
+background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+padding:70px 40px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.05);
+box-shadow:0 40px 120px rgba(0,0,0,.7);
+animation:fadeIn .8s ease forwards;
+opacity:0;
+transform:translateY(30px);
 }
 
-.success-icon{
-font-size:75px;
+@keyframes fadeIn{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* success circle */
+.success-wrapper{
+display:flex;
+justify-content:center;
+margin-bottom:35px;
+}
+
+.success-circle{
+width:110px;
+height:110px;
+border-radius:50%;
+background:rgba(188,253,76,.08);
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 0 35px rgba(188,253,76,.25);
+animation:pop .6s ease;
+}
+
+.success-circle span{
+font-size:55px;
 color:var(--accent);
-margin-bottom:25px;
-animation:pop .5s ease;
 }
 
 @keyframes pop{
-0%{transform:scale(0);}
-100%{transform:scale(1);}
+0%{transform:scale(.3);opacity:0;}
+100%{transform:scale(1);opacity:1;}
 }
 
 h2{
-font-size:28px;
+font-family:'Poppins','Cairo',sans-serif;
+font-size:clamp(24px,4vw,34px);
 margin-bottom:15px;
+background:linear-gradient(180deg,#e9fff6 0%,var(--accent) 60%,#8fe86d 100%);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 18px rgba(188,253,76,.18);
 }
 
 p{
 opacity:.85;
-margin-bottom:25px;
+margin-bottom:30px;
 font-size:16px;
 }
 
 .steps{
 background:#161616;
-padding:22px;
-border-radius:14px;
-margin-bottom:35px;
+padding:25px;
+border-radius:16px;
+margin-bottom:40px;
 font-size:14px;
-line-height:1.8;
+line-height:1.9;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.buttons{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+justify-content:center;
 }
 
 .btn{
-display:inline-block;
-margin:8px;
-padding:15px 35px;
-border-radius:10px;
+padding:16px 38px;
+border-radius:14px;
 text-decoration:none;
 font-weight:700;
-transition:.3s;
+transition:.35s cubic-bezier(.22,1,.36,1);
 }
 
 .home-btn{
 background:var(--accent);
 color:#0B0B0B;
+box-shadow:0 0 25px rgba(188,253,76,.35);
 }
 
 .home-btn:hover{
-filter:saturate(120%);
+transform:translateY(-4px);
+box-shadow:0 25px 45px rgba(188,253,76,.25);
 }
 
 .whatsapp-btn{
@@ -103,10 +149,10 @@ color:#fff;
 }
 
 .whatsapp-btn:hover{
-background:#1ebe5d;
+transform:translateY(-4px);
+box-shadow:0 20px 40px rgba(37,211,102,.35);
 }
 
-.timer{display:none}
 .back-home-float{
 position:fixed;
 right:24px;
@@ -114,14 +160,15 @@ bottom:24px;
 background:var(--accent);
 color:#0B0B0B;
 padding:12px 16px;
-border-radius:10px;
+border-radius:12px;
 text-decoration:none;
 font-weight:700;
 box-shadow:0 10px 30px rgba(188,253,76,.25);
-transition:.2s;
-z-index:1000;
+transition:.3s;
 }
-.back-home-float:hover{filter:saturate(120%);transform:translateY(-2px)}
+.back-home-float:hover{
+transform:translateY(-3px);
+}
 </style>
 </head>
 
@@ -129,18 +176,24 @@ z-index:1000;
 
 <div class="container">
 
-<div class="success-icon">✔</div>
+<div class="success-wrapper">
+<div class="success-circle">
+<span>✔</span>
+</div>
+</div>
 
 <h2>تم تأكيد استلام طلبك بنجاح</h2>
-<p>سيقوم فريق WDZ™ بالتواصل معك خلال وقت قصير لتأكيد البيانات والشحن.</p>
+
+<p>فريق WDZ™ سيتواصل معك قريبًا لتأكيد البيانات وتجهيز الشحن.</p>
 
 <div class="steps">
 📞 تأكد أن هاتفك متاح للرد<br>
-🚚 سيتم الشحن خلال 24–72 ساعة بعد التأكيد<br>
-💰 الدفع عند الاستلام فقط<br>
+🚚 الشحن خلال 24–72 ساعة بعد التأكيد<br>
+💰 الدفع عند الاستلام<br>
 🔒 بياناتك محمية بالكامل
 </div>
 
+<div class="buttons">
 <a href="https://wa.me/212XXXXXXXXX?text=مرحبا، أريد متابعة طلبي WDZ" class="btn whatsapp-btn">
 تواصل عبر واتساب
 </a>
@@ -148,30 +201,17 @@ z-index:1000;
 <a href="index.html" class="btn home-btn">
 العودة للمتجر
 </a>
-
-<!-- upsell removed per request -->
+</div>
 
 </div>
 
 <a href="index.html" class="back-home-float">Back to Home</a>
 
-<!-- countdown script removed -->
 <script>
 document.addEventListener("keydown",function(e){
-  if(e.key==="Escape"){ window.location.href="index.html"; }
+if(e.key==="Escape"){window.location.href="index.html";}
 });
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "WDZ™ Global Brand",
-  "brand": "WDZ",
-  "logo": "https://via.placeholder.com/256x256.png?text=WDZ",
-  "sameAs": []
-}
-</script>
 
-  
 </body>
 </html>
