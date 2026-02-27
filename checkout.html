@@ -4,34 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WDZ™ | Secure Checkout</title>
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="WDZ™ | Secure Checkout">
+<meta property="og:description" content="إتمام طلبك بشكل آمن وسريع مع WDZ™">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_MA">
+<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=WDZ%E2%84%A2+Global+Brand">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ff1e1e'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='white'%3EWDZ%3C/text%3E%3C/svg%3E">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
+:root{
+  --bg:#0B0B0B;
+  --bg2:#262b25;
+  --accent:#bcfd4c;
+  --neutral:#6e6e6e;
+  --text:#FFFFFF;
+  --radius:18px;
+}
 
 body{
-background:#0a0a0a;
-color:#fff;
+background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
+color:var(--text);
 display:flex;
 justify-content:center;
 padding:50px 20px;
 }
 
-.container{width:100%;max-width:700px;}
+.container{width:100%;max-width:720px;}
 
-h2{text-align:center;margin-bottom:30px;}
+h2{text-align:center;margin-bottom:30px;font-weight:800}
 
 .card{
-background:#111;
+background:var(--bg2);
 padding:35px;
 border-radius:18px;
-box-shadow:0 0 50px rgba(255,0,0,.15);
+box-shadow:0 25px 60px rgba(188,253,76,.18);
 margin-bottom:30px;
 }
 
 .summary{
-background:#1a1a1a;
+background:#161616;
 padding:20px;
 border-radius:12px;
 margin-top:15px;
@@ -43,36 +60,36 @@ width:100%;
 padding:15px;
 margin-bottom:18px;
 border:none;
-border-radius:10px;
-background:#1f1f1f;
-color:#fff;
+border-radius:14px;
+background:#161616;
+color:var(--text);
 font-size:15px;
 }
 
 input:focus,select:focus,textarea:focus{
-outline:2px solid #ff1e1e;
+outline:2px solid var(--accent);
 }
 
 button{
 width:100%;
 padding:18px;
-background:#ff1e1e;
+background:var(--accent);
 border:none;
-border-radius:12px;
-color:#fff;
+border-radius:14px;
+color:#0B0B0B;
 font-weight:700;
 font-size:16px;
 cursor:pointer;
 transition:.3s;
 }
 
-button:hover{background:#cc0000;}
+button:hover{filter:saturate(120%);}
 button:disabled{background:#555;}
 
 .total{
 font-size:20px;
 font-weight:800;
-color:#ff1e1e;
+color:var(--accent);
 margin-top:10px;
 }
 
@@ -90,27 +107,32 @@ font-size:20px;
 margin-top:120px;
 }
 </style>
+<style>
+input#phone{direction:ltr;text-align:left}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>Secure Checkout</h2>
+<h2>إتمام الطلب الآمن</h2>
 
 <div id="summary-card" class="card">
-<h3>Order Summary</h3>
+<h3>ملخص الطلب</h3>
 <div id="order-summary" class="summary"></div>
+<div style="display:flex;justify-content:space-between;margin-top:10px"><span>المجموع الفرعي</span><strong id="co-sub">0 MAD</strong></div>
+<div style="display:flex;justify-content:space-between;margin-top:6px"><span>الشحن</span><strong id="co-ship">30 MAD</strong></div>
 <div class="total" id="total-price"></div>
 </div>
 
 <div class="card">
-<h3>Customer Information</h3>
+<h3>معلومات العميل</h3>
 
 <form id="checkout-form">
 
 <input type="text" id="name" placeholder="الاسم الكامل" required>
-<input type="tel" id="phone" placeholder="رقم الهاتف" required>
+<input type="tel" id="phone" placeholder="رقم الهاتف" required inputmode="numeric" autocomplete="tel" pattern="^0\\d{9}$" minlength="10" maxlength="10" title="أدخل رقم مغربي صحيح: يبدأ بـ 0 ويتبعه 9 أرقام">
 
 <select id="city" required>
 <option value="">اختر المدينة</option>
@@ -125,22 +147,14 @@ margin-top:120px;
 
 <input type="text" id="address" placeholder="العنوان الكامل" required>
 
-<select id="quantity">
-<option value="1">1 قطعة</option>
-<option value="2">2 قطع (خصم 10%)</option>
-<option value="3">3 قطع (خصم 20%)</option>
-</select>
+<!-- quantity selection removed per request -->
 
-<select id="color">
-<option value="Default">اللون الافتراضي</option>
-<option>أسود</option>
-<option>أحمر</option>
-<option>أبيض</option>
-</select>
+<!-- color selection removed per request -->
 
-<textarea id="note" placeholder="ملاحظة إضافية (اختياري)"></textarea>
+<!-- note removed per request -->
 
-<button type="submit" id="submit-btn">Confirm Order</button>
+<button type="submit" id="submit-btn">تأكيد الطلب</button>
+<p id="msg" style="text-align:center;margin-top:10px;"></p>
 
 <div class="trust">
 🚚 توصيل سريع 24-72 ساعة<br>
@@ -157,32 +171,30 @@ margin-top:120px;
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const summary = document.getElementById("order-summary");
 const totalPrice = document.getElementById("total-price");
-const quantitySelect = document.getElementById("quantity");
+const summaryCard = document.getElementById("summary-card");
+const msg = document.getElementById("msg");
+const SHIPPING_COST = 30;
+const phoneEl = document.getElementById("phone");
+phoneEl.addEventListener("input", function(){
+  this.value = this.value.replace(/[^0-9]/g,'').slice(0,10);
+});
 
 if(cart.length === 0){
-document.body.innerHTML = "<div class='empty'>لا يوجد منتج في السلة</div>";
+  summaryCard.style.display = "none";
 }else{
-summary.innerHTML =
-"<strong>المنتج:</strong> " + cart[0].name + "<br>" +
-"<strong>السعر للوحدة:</strong> " + cart[0].price + " MAD";
-updateTotal();
+  let sub = 0;
+  summary.innerHTML = cart.map(item=>{
+    const q = item.qty || 1;
+    const line = item.price * q;
+    sub += line;
+    return `<div style="display:flex;justify-content:space-between"><span>${item.name} × ${q}</span><strong>${line} MAD</strong></div>`;
+  }).join("");
+  document.getElementById("co-sub").innerText = sub + " MAD";
+  document.getElementById("co-ship").innerText = (cart.length?SHIPPING_COST:0) + " MAD";
+  totalPrice.innerText = "الإجمالي: " + (sub + (cart.length?SHIPPING_COST:0)) + " MAD";
 }
 
-quantitySelect.addEventListener("change", updateTotal);
-
-function updateTotal(){
-let basePrice = parseInt(cart[0].price);
-let qty = parseInt(quantitySelect.value);
-let discount = 0;
-
-if(qty === 2) discount = 0.10;
-if(qty === 3) discount = 0.20;
-
-let total = basePrice * qty;
-total = total - (total * discount);
-
-totalPrice.innerText = "المجموع: " + total + " MAD";
-}
+// total calculation simplified to single unit
 
 document.getElementById("checkout-form").addEventListener("submit", function(e){
 e.preventDefault();
@@ -191,24 +203,23 @@ if(cart.length === 0) return;
 
 const btn = document.getElementById("submit-btn");
 btn.disabled = true;
-btn.innerText = "Processing...";
+btn.innerText = "جاري المعالجة...";
 
-let basePrice = parseInt(cart[0].price);
-let qty = parseInt(quantitySelect.value);
-let discount = (qty === 2) ? 0.10 : (qty === 3) ? 0.20 : 0;
-let total = basePrice * qty;
-total = total - (total * discount);
+const now = new Date();
+const dateStr = now.toLocaleString("ar-MA", {hour12:false});
+
+// product and total (fallbacks if no cart)
+const productName = (cart.length ? cart.map(i=>`${i.name}×${i.qty||1}`).join(", ") : "WDZ Direct Order");
+const totalValue = (cart.length ? cart.reduce((a,i)=>a+(i.price*(i.qty||1)),0) + SHIPPING_COST : 0);
 
 const data = {
-name: document.getElementById("name").value,
-phone: document.getElementById("phone").value,
-city: document.getElementById("city").value,
-address: document.getElementById("address").value,
-quantity: qty,
-color: document.getElementById("color").value,
-note: document.getElementById("note").value,
-product: cart[0].name,
-total: total
+  name: document.getElementById("name").value,
+  phone: document.getElementById("phone").value,
+  city: document.getElementById("city").value,
+  address: document.getElementById("address").value,
+  date: dateStr,
+  product: productName,
+  total: totalValue
 };
 
 fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec",{
@@ -222,11 +233,22 @@ localStorage.removeItem("cart");
 window.location.href="thankyou.html";
 })
 .catch(()=>{
-alert("حدث خطأ أثناء الإرسال");
+msg.style.color="red";
+msg.innerText="حدث خطأ أثناء الإرسال";
 btn.disabled=false;
-btn.innerText="Confirm Order";
+btn.innerText="تأكيد الطلب";
 });
 });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "WDZ™ Global Brand",
+  "brand": "WDZ",
+  "logo": "https://via.placeholder.com/256x256.png?text=WDZ",
+  "sameAs": []
+}
 </script>
 
 </body>
