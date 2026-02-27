@@ -8,48 +8,78 @@
 <meta name="description" content="WDZ™ Premium Street Brand in Morocco. High quality. Limited edition. Cash on delivery.">
 <meta property="og:title" content="WDZ™ Official Store">
 <meta property="og:description" content="Premium quality. Limited edition. Order now.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=WDZ%E2%84%A2+Global+Brand">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_MA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ff1e1e'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='white'%3EWDZ%3C/text%3E%3C/svg%3E">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
+:root{
+  --bg:#0B0B0B;
+  --bg2:#262b25;
+  --accent:#bcfd4c;
+  --neutral:#6e6e6e;
+  --text:#FFFFFF;
+  --muted:#bfbfbf;
+  --radius:18px;
+  --shadow:0 20px 60px rgba(188,253,76,.18);
+}
 
 body{
-background:#0a0a0a;
-color:#fff;
+background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
+color:var(--text);
 overflow-x:hidden;
 }
 
 .container{width:90%;max-width:1200px;margin:auto;}
 
 header{
-background:#0d0d0d;
+background:transparent;
+backdrop-filter:saturate(160%) blur(10px);
 padding:20px 0;
-border-bottom:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid rgba(255,255,255,.06);
 position:sticky;
 top:0;
 z-index:1000;
 }
+.scrolled{background:rgba(26,26,26,.45);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 
 .nav{display:flex;justify-content:space-between;align-items:center;}
 
 .logo{font-size:24px;font-weight:800;letter-spacing:2px;}
-.logo span{color:#ff1e1e;}
+.logo span{color:var(--accent);}
 
 nav a{
-color:#fff;
+color:var(--text);
 text-decoration:none;
 margin-left:25px;
 font-weight:600;
 transition:.3s;
 }
-nav a:hover{color:#ff1e1e;}
+nav a:hover{color:var(--accent);}
 
 .nav-btn{
-background:#ff1e1e;
+background:var(--accent);
 padding:8px 18px;
-border-radius:6px;
+border-radius:12px;
+color:#000;
+box-shadow:0 10px 25px rgba(188,253,76,.25);
 }
+.cart-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(188,253,76,.10);color:var(--accent);
+  padding:8px 14px;border-radius:12px;border:1px solid rgba(188,253,76,.35);
+  transition:.3s;
+}
+.cart-btn:hover{background:rgba(188,253,76,.16)}
+.cart-icon{width:18px;height:18px;display:inline-block}
+.cart-count{background:var(--accent);color:#0B0B0B;border-radius:999px;padding:2px 8px;font-weight:700}
 
 .hero{
 padding:120px 0;
@@ -60,10 +90,23 @@ justify-content:space-between;
 }
 
 .hero-text{flex:1;min-width:300px;}
-.hero-text h1{font-size:48px;margin-bottom:20px;}
-.hero-text p{opacity:.85;margin-bottom:25px;font-size:18px;}
+.hero-text h1{font-size:54px;line-height:1.15;margin-bottom:18px;font-weight:800;}
+.hero-text h1 .accent{color:var(--accent);}
+.hero-text p{opacity:.85;margin-bottom:28px;font-size:18px;max-width:540px}
+.display-title{
+  font-family:'Poppins','Cairo',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:800;
+  font-size:clamp(36px,6vw,68px);
+  background:linear-gradient(180deg,#e9fff6 0%,var(--accent) 55%,#8fe86d 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 22px rgba(188,253,76,.18);
+}
 
-.price{font-size:36px;font-weight:800;color:#ff1e1e;}
+.price{font-size:36px;font-weight:800;color:var(--accent);}
 
 .badges{
 margin-top:15px;
@@ -74,18 +117,32 @@ line-height:1.8;
 
 .btn{
 display:inline-block;
-background:#ff1e1e;
-color:#fff;
+background:var(--accent);
+color:#0B0B0B;
 padding:18px 45px;
-border-radius:10px;
+border-radius:14px;
 text-decoration:none;
 font-weight:700;
 transition:.3s;
-box-shadow:0 0 25px rgba(255,0,0,.6);
+box-shadow:0 0 25px rgba(188,253,76,.35);
+box-shadow:0 0 25px rgba(188,253,76,.30);
 }
 .btn:hover{
-background:#cc0000;
+filter:saturate(120%);
 transform:translateY(-4px);
+}
+.btn-outline{background:transparent;color:var(--neutral);border:1px solid var(--neutral)}
+.btn-outline:hover{background:rgba(110,110,110,.12)}
+.btn-shop{
+background:var(--accent);
+color:#000000;
+border:1px solid #000000;
+box-shadow:0 8px 22px rgba(0,0,0,.25);
+}
+.btn-shop:hover{
+background:#a9f53c;
+transform:translateY(-3px);
+box-shadow:0 10px 26px rgba(0,0,0,.3);
 }
 
 .hero-img{
@@ -96,13 +153,13 @@ text-align:center;
 .hero-img img{
 max-width:100%;
 border-radius:20px;
-box-shadow:0 20px 60px rgba(255,0,0,.3);
+box-shadow:0 40px 90px rgba(188,253,76,.18);
 }
 
 .section{
 padding:90px 0;
 text-align:center;
-background:#111;
+background:linear-gradient(180deg,rgba(26,26,26,.35),rgba(26,26,26,.12));
 }
 
 .features{
@@ -114,24 +171,48 @@ margin-top:40px;
 }
 
 .feature{
-background:#1a1a1a;
+background:var(--bg2);
 padding:30px;
-border-radius:15px;
+border-radius:18px;
 width:260px;
-transition:.3s;
+transition:.3s ease;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
 }
 .feature:hover{
 transform:translateY(-8px);
-box-shadow:0 15px 40px rgba(255,0,0,.2);
+box-shadow:0 25px 60px rgba(188,253,76,.18), inset 0 0 0 1px rgba(188,253,76,.45);
 }
+.feature.standard{
+display:flex;
+align-items:center;
+gap:14px;
+padding:26px 28px;
+border-radius:22px;
+border:1px solid rgba(103,248,29,.25);
+background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01)), var(--bg2);
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+transition:.3s ease;
+}
+.feature.standard:hover{
+transform:translateY(-6px);
+box-shadow:0 25px 60px rgba(103,248,29,.18), inset 0 0 0 1px rgba(103,248,29,.35);
+}
+.std-icon{
+width:40px;height:40px;border-radius:999px;
+display:inline-flex;align-items:center;justify-content:center;
+font-size:20px;color:var(--accent);
+background:radial-gradient(closest-side,rgba(103,248,29,.35),rgba(103,248,29,.12));
+box-shadow:0 0 24px rgba(103,248,29,.35);
+}
+.std-label{font-weight:700;letter-spacing:.2px}
 
 .order-box{
-background:#111;
+background:var(--bg2);
 padding:60px;
 border-radius:20px;
 max-width:650px;
 margin:100px auto;
-box-shadow:0 0 60px rgba(255,0,0,.2);
+box-shadow:var(--shadow);
 }
 
 input,select,textarea{
@@ -139,30 +220,30 @@ width:100%;
 padding:15px;
 margin-bottom:18px;
 border:none;
-border-radius:10px;
-background:#1f1f1f;
-color:#fff;
+border-radius:14px;
+background:#161616;
+color:var(--text);
 font-size:15px;
 }
 
 input:focus,select:focus,textarea:focus{
-outline:2px solid #ff1e1e;
+outline:2px solid var(--accent);
 }
 
 .submit-btn{
 width:100%;
-background:#ff1e1e;
-color:#fff;
+background:var(--accent);
+color:#0B0B0B;
 padding:18px;
 border:none;
-border-radius:12px;
+border-radius:14px;
 font-weight:700;
 cursor:pointer;
 transition:.3s;
 font-size:16px;
 }
 
-.submit-btn:hover{background:#cc0000;}
+.submit-btn:hover{filter:saturate(120%);}
 .submit-btn:disabled{background:#555;}
 
 .trust{
@@ -181,6 +262,9 @@ background:#0d0d0d;
 font-size:14px;
 }
 </style>
+<style>
+input[name="phone"]{direction:ltr;text-align:left}
+</style>
 </head>
 
 <body>
@@ -190,15 +274,16 @@ font-size:14px;
 <div class="logo">WDZ™ <span>Global</span></div>
 <nav>
 <a href="#">الرئيسية</a>
-<a href="#order" class="nav-btn">اطلب الآن</a>
+<a href="checkout.html" class="nav-btn">اطلب الآن</a>
+<button class="cart-btn" id="cartBtn"><span class="cart-icon">🛒</span><span>السلة</span><span class="cart-count" id="cartCount">0</span></button>
 </nav>
 </div>
 </header>
 
-<section class="hero container">
+<section class="hero container reveal">
 <div class="hero-text">
-<h1>WDZ™ — Redefining Street Power</h1>
-<p>تصميم عالمي. جودة احترافية. هوية لا تشبه أحد.</p>
+<h1 class="display-title">WDZ PREMIUM STREETWEAR</h1>
+<p>هوية جريئة، تصميم مستقبلي، إصدار محدود لمن يرفض العادي.</p>
 <div class="price">199 MAD</div>
 <div class="badges">
 🌍 شحن لجميع مدن المغرب<br>
@@ -206,7 +291,8 @@ font-size:14px;
 🛡 ضمان جودة حقيقي
 </div>
 <br>
-<a href="#order" class="btn">اطلب الآن</a>
+<a href="checkout.html" class="btn btn-shop">اطلب الآن</a>
+<a href="#products" class="btn btn-outline" style="margin-inline-start:12px">استعراض المنتجات</a>
 </div>
 
 <div class="hero-img">
@@ -214,102 +300,167 @@ font-size:14px;
 </div>
 </section>
 
-<section class="section">
+<section class="section reveal">
+<h2>WDZ™ Products</h2>
+<div class="features" id="products">
+  <div class="feature">
+    <img src="https://via.placeholder.com/260x260?text=Hoodie+Black" alt="WDZ Hoodie Black" style="width:100%;border-radius:12px;margin-bottom:12px">
+    <div style="font-weight:700;margin-bottom:6px">WDZ Hoodie — Black</div>
+    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">199 MAD</div>
+    <a href="#" class="btn" data-name="WDZ Hoodie — Black" data-price="199">اطلب الآن</a>
+    <a href="#" class="btn btn-outline add-cart" data-id="hoodie-black" data-name="WDZ Hoodie — Black" data-price="199" data-img="https://via.placeholder.com/260x260?text=Hoodie+Black" style="margin-top:10px">أضف للسلة</a>
+  </div>
+  <div class="feature">
+    <img src="https://via.placeholder.com/260x260?text=Hoodie+Red" alt="WDZ Hoodie Red" style="width:100%;border-radius:12px;margin-bottom:12px">
+    <div style="font-weight:700;margin-bottom:6px">WDZ Hoodie — Red</div>
+    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">199 MAD</div>
+    <a href="#" class="btn" data-name="WDZ Hoodie — Red" data-price="199">اطلب الآن</a>
+    <a href="#" class="btn btn-outline add-cart" data-id="hoodie-red" data-name="WDZ Hoodie — Red" data-price="199" data-img="https://via.placeholder.com/260x260?text=Hoodie+Red" style="margin-top:10px">أضف للسلة</a>
+  </div>
+  <div class="feature">
+    <img src="https://via.placeholder.com/260x260?text=Tee+White" alt="WDZ Tee White" style="width:100%;border-radius:12px;margin-bottom:12px">
+    <div style="font-weight:700;margin-bottom:6px">WDZ Tee — White</div>
+    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">149 MAD</div>
+    <a href="#" class="btn" data-name="WDZ Tee — White" data-price="149">اطلب الآن</a>
+    <a href="#" class="btn btn-outline add-cart" data-id="tee-white" data-name="WDZ Tee — White" data-price="149" data-img="https://via.placeholder.com/260x260?text=Tee+White" style="margin-top:10px">أضف للسلة</a>
+  </div>
+  <div class="feature">
+    <img src="https://via.placeholder.com/260x260?text=Cap+Black" alt="WDZ Cap Black" style="width:100%;border-radius:12px;margin-bottom:12px">
+    <div style="font-weight:700;margin-bottom:6px">WDZ Cap — Black</div>
+    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">99 MAD</div>
+    <a href="#" class="btn" data-name="WDZ Cap — Black" data-price="99">اطلب الآن</a>
+    <a href="#" class="btn btn-outline add-cart" data-id="cap-black" data-name="WDZ Cap — Black" data-price="99" data-img="https://via.placeholder.com/260x260?text=Cap+Black" style="margin-top:10px">أضف للسلة</a>
+  </div>
+</div>
+</section>
+
+<section class="section reveal">
 <h2>WDZ™ Standards</h2>
 <div class="features">
-<div class="feature">🌍 Global Quality Control</div>
-<div class="feature">🔒 Secure Data Encryption</div>
-<div class="feature">🚚 Fast Nationwide Shipping</div>
-<div class="feature">💳 Cash On Delivery</div>
+<div class="feature standard"><span class="std-icon">💳</span><span class="std-label">Cash On Delivery</span></div>
+<div class="feature standard"><span class="std-icon">�</span><span class="std-label">Fast Nationwide Shipping</span></div>
+<div class="feature standard"><span class="std-icon">�</span><span class="std-label">Secure Data Encryption</span></div>
+<div class="feature standard"><span class="std-icon">🌍</span><span class="std-label">Global Quality Control</span></div>
 </div>
 </section>
 
-<section id="order">
-<div class="order-box">
-<h2 style="text-align:center;margin-bottom:30px;">Complete Your Order</h2>
-
-<form id="orderForm">
-
-<input type="text" name="name" placeholder="الاسم الكامل" required>
-<input type="tel" name="phone" placeholder="رقم الهاتف" required>
-
-<select name="city" required>
-<option value="">اختر المدينة</option>
-<option>الدار البيضاء</option>
-<option>الرباط</option>
-<option>مراكش</option>
-<option>فاس</option>
-<option>طنجة</option>
-<option>أكادير</option>
-<option>بني ملال</option>
-</select>
-
-<input type="text" name="address" placeholder="العنوان الكامل" required>
-
-<select name="quantity" required>
-<option value="1">1 قطعة</option>
-<option value="2">2 قطع (خصم 10%)</option>
-<option value="3">3 قطع (خصم 20%)</option>
-</select>
-
-<select name="color">
-<option value="">اختر اللون</option>
-<option>أسود</option>
-<option>أحمر</option>
-<option>أبيض</option>
-</select>
-
-<textarea name="note" placeholder="ملاحظة إضافية (اختياري)"></textarea>
-
-<input type="hidden" name="product" value="WDZ Global Product">
-<input type="hidden" name="price" value="199">
-
-<button type="submit" class="submit-btn">تأكيد الطلب</button>
-
-<div class="trust">
-🚚 التوصيل خلال 24-72 ساعة<br>
-💰 الدفع عند الاستلام<br>
-🔒 حماية بيانات متقدمة
-</div>
-
-</form>
-
-<p id="msg" style="margin-top:15px;text-align:center;"></p>
-</div>
-</section>
+ 
 
 <footer>
 © 2026 WDZ™ Global Brand — All Rights Reserved
 </footer>
 
+<div id="cartOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:.3s"></div>
+<aside id="cartDrawer" style="position:fixed;top:0;right:0;height:100vh;width:380px;max-width:100%;background:#1A1A1A;box-shadow:-20px 0 60px rgba(0,0,0,.45);transform:translateX(100%);transition:.35s;border-top-left-radius:18px;border-bottom-left-radius:18px;display:flex;flex-direction:column">
+  <div style="padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center">
+    <div style="font-weight:800">سلة الشراء</div>
+    <button id="closeCart" class="cart-btn" style="border:none;background:rgba(188,253,76,.12)">إغلاق</button>
+  </div>
+  <div id="cartItems" style="flex:1;overflow:auto;padding:16px"></div>
+  <div style="padding:16px;border-top:1px solid rgba(255,255,255,.06)">
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span>المجموع الفرعي</span><strong id="subTotal">0 MAD</strong></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span>الشحن</span><strong id="shipping">30 MAD</strong></div>
+    <div style="display:flex;justify-content:space-between;font-size:18px"><span>الإجمالي</span><strong id="grandTotal">0 MAD</strong></div>
+    <a href="checkout.html" class="btn" style="display:block;text-align:center;margin-top:12px">الانتقال للدفع</a>
+  </div>
+</aside>
+<div id="toast" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#121212;color:#fff;padding:12px 18px;border-radius:12px;border:1px solid rgba(188,253,76,.35);box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.3s">تمت إضافة المنتج إلى السلة</div>
 <script>
-document.getElementById("orderForm").addEventListener("submit", function(e){
-e.preventDefault();
-
-const msg=document.getElementById("msg");
-const btn=document.querySelector(".submit-btn");
-
-btn.disabled=true;
-btn.innerText="Processing...";
-
-const formData=new FormData(this);
-
-fetch("https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec",{
-method:"POST",
-headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify(Object.fromEntries(formData))
-})
-.then(res=>res.text())
-.then(()=>{
-window.location.href="thankyou.html";
-})
-.catch(()=>{
-msg.style.color="red";
-msg.innerText="حدث خطأ أثناء الإرسال";
-btn.disabled=false;
-btn.innerText="تأكيد الطلب";
+// Add-to-checkout for product cards
+document.querySelectorAll("#products .btn").forEach(function(el){
+  el.addEventListener("click",function(e){
+    e.preventDefault();
+    var name = this.getAttribute("data-name");
+    var price = this.getAttribute("data-price");
+    localStorage.setItem("cart", JSON.stringify([{name:name, price:price}]));
+    window.location.href = "checkout.html";
+  });
 });
+</script>
+<script>
+const SHIPPING_COST = 30;
+function getCart(){ try{ return JSON.parse(localStorage.getItem('cartFull'))||[]; }catch(e){ return []; } }
+function setCart(items){ localStorage.setItem('cartFull', JSON.stringify(items)); updateCounter(); }
+function updateCounter(){ const count=getCart().reduce((a,i)=>a+i.qty,0); document.getElementById('cartCount').innerText=count; }
+function showToast(text){ const t=document.getElementById('toast'); t.innerText=text||t.innerText; t.style.opacity='1'; setTimeout(()=>{ t.style.opacity='0'; },1200); }
+function openDrawer(){ document.getElementById('cartOverlay').style.opacity='1'; document.getElementById('cartOverlay').style.pointerEvents='auto'; document.getElementById('cartDrawer').style.transform='translateX(0)'; renderCart(); }
+function closeDrawer(){ document.getElementById('cartOverlay').style.opacity='0'; document.getElementById('cartOverlay').style.pointerEvents='none'; document.getElementById('cartDrawer').style.transform='translateX(100%)'; }
+function addToCart(p){ const items=getCart(); const idx=items.findIndex(i=>i.id===p.id); if(idx>-1){ items[idx].qty+=1; } else { items.push({id:p.id,name:p.name,price:parseInt(p.price),img:p.img,qty:1}); } setCart(items); showToast('تمت إضافة المنتج إلى السلة'); renderCart(); }
+function removeItem(id){ const items=getCart().filter(i=>i.id!==id); setCart(items); renderCart(); }
+function updateQty(id,delta){ const items=getCart(); const it=items.find(i=>i.id===id); if(!it) return; it.qty=Math.max(1,it.qty+delta); setCart(items); renderCart(); }
+function formatMAD(n){ return `${n} MAD`; }
+function renderCart(){ const items=getCart(); const wrap=document.getElementById('cartItems'); if(items.length===0){ wrap.innerHTML=`<div style="text-align:center;opacity:.7;padding:24px">السلة فارغة</div>`; document.getElementById('subTotal').innerText=formatMAD(0); document.getElementById('grandTotal').innerText=formatMAD(0); return; } wrap.innerHTML=items.map(i=>`
+  <div style="display:flex;gap:12px;padding:10px;border-bottom:1px solid rgba(255,255,255,.06)">
+    <img src="${i.img}" alt="${i.name}" style="width:60px;height:60px;border-radius:10px;object-fit:cover">
+    <div style="flex:1">
+      <div style="font-weight:700">${i.name}</div>
+      <div style="color:var(--accent)">${formatMAD(i.price)}</div>
+      <div style="display:flex;gap:10px;margin-top:8px;align-items:center">
+        <button class="cart-btn" style="border:none" data-act="dec" data-id="${i.id}">-</button>
+        <span style="min-width:24px;text-align:center">${i.qty}</span>
+        <button class="cart-btn" style="border:none" data-act="inc" data-id="${i.id}">+</button>
+        <button class="cart-btn" style="margin-inline-start:auto;border:none" data-act="rm" data-id="${i.id}">إزالة</button>
+      </div>
+    </div>
+  </div>`).join('');
+  wrap.querySelectorAll('button[data-act]').forEach(b=>{
+    const id=b.getAttribute('data-id'); const act=b.getAttribute('data-act');
+    b.onclick=()=>{ if(act==='inc') updateQty(id,1); else if(act==='dec') updateQty(id,-1); else removeItem(id); };
+  });
+  const sub=items.reduce((a,i)=>a+i.price*i.qty,0);
+  document.getElementById('subTotal').innerText=formatMAD(sub);
+  document.getElementById('grandTotal').innerText=formatMAD(sub + (items.length?SHIPPING_COST:0));
+  document.getElementById('shipping').innerText=formatMAD(items.length?SHIPPING_COST:0);
+}
+document.querySelectorAll('.add-cart').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.preventDefault();
+    addToCart({id:btn.dataset.id,name:btn.dataset.name,price:btn.dataset.price,img:btn.dataset.img});
+    openDrawer();
+  });
 });
+document.getElementById('cartBtn').addEventListener('click',openDrawer);
+document.getElementById('closeCart').addEventListener('click',closeDrawer);
+document.getElementById('cartOverlay').addEventListener('click',closeDrawer);
+updateCounter();
+// expose cart for checkout
+function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart', JSON.stringify(items.map(i=>({name:i.name,price:i.price,qty:i.qty,img:i.img})))); }
+window.addEventListener('beforeunload',exportCartToSimple);
+</script>
+<script>
+// navbar blur on scroll + reveal fade-ins
+const headerEl=document.querySelector('header');
+window.addEventListener('scroll',()=>{ if(window.scrollY>8){ headerEl.classList.add('scrolled'); } else { headerEl.classList.remove('scrolled'); } });
+const io=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }); },{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(24px)'; el.style.transition='opacity .6s ease, transform .6s ease'; io.observe(el); });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "WDZ™ Global Brand",
+  "brand": "WDZ",
+  "logo": "https://via.placeholder.com/256x256.png?text=WDZ",
+  "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "WDZ Global Product",
+  "image": "https://via.placeholder.com/500x500",
+  "brand": {
+    "@type": "Brand",
+    "name": "WDZ"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "199",
+    "priceCurrency": "MAD",
+    "availability": "https://schema.org/InStock"
+  }
+}
 </script>
 
 </body>
