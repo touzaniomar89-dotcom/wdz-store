@@ -7,19 +7,55 @@
 
 <style>
 :root{
---bg:#0B0B0B;
---card:#111;
---accent:#39FF14;
---text:#fff;
+  --bg:#0B0B0B;
+  --bg2:#262b25;
+  --accent:#bcfd4c;
+  --neutral:#6e6e6e;
+  --text:#FFFFFF;
+  --muted:#bfbfbf;
+  --radius:18px;
+  --shadow:0 20px 60px rgba(188,253,76,.18);
 }
 
 body{
-margin:0;
-background:var(--bg);
+background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
 color:var(--text);
-font-family:Arial, sans-serif;
+}
+.wdz-card{
+background:var(--bg2);
+padding:40px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.05);
+transition:.4s ease;
 }
 
+.wdz-card:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 60px rgba(188,253,76,.18);
+border:1px solid var(--accent);
+}
+  .wdz-title{
+font-size:32px;
+color:var(--accent);
+text-shadow:0 0 20px rgba(188,253,76,.5);
+margin-bottom:20px;
+}
+  .wdz-btn{
+display:inline-block;
+background:var(--accent);
+color:#0B0B0B;
+padding:16px 40px;
+border-radius:14px;
+font-weight:700;
+text-decoration:none;
+box-shadow:0 0 25px rgba(188,253,76,.35);
+transition:.3s;
+}
+
+.wdz-btn:hover{
+transform:translateY(-4px);
+filter:saturate(120%);
+}
 .section{
 padding:80px 20px;
 text-align:center;
