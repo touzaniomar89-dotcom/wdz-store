@@ -636,13 +636,14 @@ updateCounter();
 // expose cart for checkout
 function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart', JSON.stringify(items.map(i=>({name:i.name,price:i.price,qty:i.qty,img:i.img})))); }
 window.addEventListener('beforeunload',exportCartToSimple);
-  /* ===== Premium Swipe To Close (Mobile RTL) ===== */
+/* ===== WDZ Premium Swipe To Close (RTL Mobile Perfect) ===== */
 
 let startX = 0;
 let currentX = 0;
 let isDragging = false;
 
 const drawer = document.getElementById("cartDrawer");
+const overlay = document.getElementById("cartOverlay");
 
 drawer.addEventListener("touchstart", (e) => {
 
@@ -655,6 +656,42 @@ drawer.addEventListener("touchstart", (e) => {
 
 });
 
+drawer.addEventListener("touchmove", (e) => {
+
+  if (!isDragging) return;
+
+  currentX = e.touches[0].clientX;
+  let diff = currentX - startX;
+
+  if (diff > 0) {
+    drawer.style.transition = "none";
+    drawer.style.transform = `translateX(${diff}px)`;
+
+    // تأثير خفيف على الخلفية
+    overlay.style.opacity = 1 - (diff / 400);
+  }
+
+});
+
+drawer.addEventListener("touchend", () => {
+
+  if (!isDragging) return;
+
+  let diff = currentX - startX;
+
+  drawer.style.transition = ".35s cubic-bezier(.22,1,.36,1)";
+  overlay.style.transition = ".35s";
+
+  if (diff > 120) {
+    closeDrawer();
+  } else {
+    drawer.style.transform = "translateX(0)";
+    overlay.style.opacity = "1";
+  }
+
+  isDragging = false;
+
+});
 drawer.addEventListener("touchmove", (e) => {
 
   if (!isDragging) return;
@@ -760,6 +797,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
