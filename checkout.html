@@ -1,86 +1,188 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WDZ™ | Secure Checkout</title>
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23ff1e1e'/%3E%3Ctext x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='white'%3EWDZ%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WDZ™ | Secure Checkout</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo','Poppins',sans-serif;}
+:root{
+  --bg:#0B0B0B;
+  --accent:#bcfd4c;
+  --text:#FFFFFF;
+}
+body{
+background:radial-gradient(1200px 600px at 20% 0,#141414 0,var(--bg) 60%) var(--bg);
+color:var(--text);
+display:flex;
+justify-content:center;
+padding:80px 20px;
+}
+.container{width:100%;max-width:820px;}
+.checkout-title{
+text-align:center;
+font-weight:800;
+font-size:32px;
+margin-bottom:40px;
+color:var(--accent);
+}
+.card{
+background:#161616;
+padding:40px;
+border-radius:20px;
+margin-bottom:40px;
+}
+.summary{margin-top:20px;line-height:1.9;}
+input,select{
+width:100%;
+padding:14px;
+margin-bottom:18px;
+border-radius:12px;
+border:1px solid #333;
+background:#111;
+color:white;
+}
+button{
+width:100%;
+padding:16px;
+background:var(--accent);
+border:none;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+}
+.total{
+font-size:20px;
+font-weight:800;
+color:var(--accent);
+margin-top:15px;
+}
+</style>
 </head>
-<body class="checkout">
 
-<header class="site-header">
-  <div class="container nav">
-    <div class="logo">
-      WDZ™ <span>Global</span>
-      <small>World Of The Death Zone</small>
-    </div>
-    <nav aria-label="القائمة الرئيسية">
-      <a href="index.html" class="nav-link">الرئيسية</a>
-      <a href="checkout.html" class="nav-btn">اطلب الآن</a>
-      <button class="cart-btn" id="cartBtn" aria-label="فتح السلة">
-        <span class="cart-icon" aria-hidden="true">🛒</span>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-    </nav>
-  </div>
-</header>
+<body>
 
-<main>
-  <div class="container">
-    <h2>إتمام الطلب الآمن</h2>
+<div class="container">
 
-    <div id="summary-card" class="card">
-      <h3>ملخص الطلب</h3>
-      <div id="order-summary" class="summary"></div>
-      <div class="cart-row"><span>المجموع الفرعي</span><strong id="co-sub">0 MAD</strong></div>
-      <div class="cart-row"><span>الشحن</span><strong id="co-ship">0 MAD</strong></div>
-      <div class="total" id="total-price"></div>
-    </div>
+<h2 class="checkout-title">إتمام الطلب الآمن</h2>
 
-    <div class="card">
-      <h3>معلومات العميل</h3>
-      <form id="checkout-form">
-        <input type="text" id="name" placeholder="الاسم الكامل" required>
-        <input type="tel" id="phone" placeholder="رقم الهاتف" required inputmode="numeric" autocomplete="tel" maxlength="16">
-        <small id="phone-help" class="help-text">
-          يدعم: 0XXXXXXXXX أو +212XXXXXXXXX أو 212XXXXXXXXX — يتم التحويل تلقائيًا.
-        </small>
+<div id="summary-card" class="card">
+<h3>ملخص الطلب</h3>
+<div id="order-summary" class="summary"></div>
+<div style="display:flex;justify-content:space-between;margin-top:15px">
+<span>المجموع الفرعي</span><strong id="co-sub">0 MAD</strong>
+</div>
+<div style="display:flex;justify-content:space-between;margin-top:6px">
+<span>الشحن</span><strong id="co-ship">30 MAD</strong>
+</div>
+<div class="total" id="total-price"></div>
+</div>
 
-        <select id="city" required>
-          <option value="">اختر المدينة</option>
-          <option>الدار البيضاء</option>
-          <option>الرباط</option>
-          <option>مراكش</option>
-          <option>فاس</option>
-          <option>طنجة</option>
-          <option>أكادير</option>
-          <option>بني ملال</option>
-        </select>
+<div class="card">
+<h3 style="margin-bottom:25px">معلومات العميل</h3>
 
-        <input type="text" id="address" placeholder="العنوان الكامل" required>
+<form id="checkout-form">
 
-        <button type="submit" id="submit-btn" class="submit-btn">تأكيد الطلب</button>
-        <p id="msg"></p>
+<input type="text" id="name" placeholder="الاسم الكامل" required>
+<input type="tel" id="phone" placeholder="رقم الهاتف" required>
 
-        <div class="trust">
-          🚚 توصيل سريع 24‑72 ساعة<br>
-          💰 الدفع عند الاستلام<br>
-          🔒 تشفير بيانات متقدم
-        </div>
-      </form>
-    </div>
-  </div>
-</main>
+<select id="city" required>
+<option value="">اختر المدينة</option>
+<option>الدار البيضاء</option>
+<option>الرباط</option>
+<option>مراكش</option>
+<option>فاس</option>
+<option>طنجة</option>
+<option>أكادير</option>
+<option>بني ملال</option>
+</select>
 
-<footer>
-  © 2026 WDZ™ Global Brand — All Rights Reserved
-</footer>
+<input type="text" id="address" placeholder="العنوان الكامل" required>
 
-<script defer src="main.js"></script>
+<button type="submit" id="submit-btn">تأكيد الطلب</button>
+<p id="msg" style="text-align:center;margin-top:12px;"></p>
+
+</form>
+</div>
+
+</div>
+
+<script>
+const SHIPPING_COST = 30;
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbyjwMU5fAB-_EsshT0JpPqP3RdWzA3mp0KsrN0GUgkh33ujesSP1DFfylfwKSfqa1qIxQ/exec";
+
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const summary = document.getElementById("order-summary");
+const totalPrice = document.getElementById("total-price");
+const summaryCard = document.getElementById("summary-card");
+const msg = document.getElementById("msg");
+
+let subtotal = 0;
+
+if(cart.length === 0){
+  summaryCard.style.display = "none";
+}else{
+  summary.innerHTML = cart.map(item=>{
+    const q = item.qty || 1;
+    const line = item.price * q;
+    subtotal += line;
+    return `<div style="display:flex;justify-content:space-between">
+    <span>${item.name} × ${q}</span>
+    <strong>${line} MAD</strong>
+    </div>`;
+  }).join("");
+
+  document.getElementById("co-sub").innerText = subtotal + " MAD";
+  totalPrice.innerText = "الإجمالي: " + (subtotal + SHIPPING_COST) + " MAD";
+}
+
+document.getElementById("checkout-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if(cart.length === 0){
+        msg.style.color = "red";
+        msg.innerText = "السلة فارغة!";
+        return;
+    }
+
+    const btn = document.getElementById("submit-btn");
+    btn.disabled = true;
+    btn.innerText = "جاري الإرسال...";
+
+    const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        city: document.getElementById("city").value,
+        address: document.getElementById("address").value,
+        product: cart.map(i => i.name + " x" + (i.qty || 1)).join(" | "),
+        price: subtotal + SHIPPING_COST
+    };
+
+    fetch(scriptURL,{
+        method:"POST",
+        mode:"no-cors",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+    })
+    .then(()=>{
+        localStorage.removeItem("cart");
+        window.location.href="thankyou.html";
+    })
+    .catch(()=>{
+        msg.style.color="red";
+        msg.innerText="حدث خطأ أثناء إرسال الطلب.";
+        btn.disabled=false;
+        btn.innerText="تأكيد الطلب";
+    });
+});
+</script>
+
 </body>
 </html>
