@@ -507,15 +507,23 @@ function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart
 window.addEventListener('beforeunload',exportCartToSimple);
 </script>
 <script>
-// ensure navbar "اطلب الآن" uses current cart then navigates
-const navShop=document.querySelector('a.nav-btn[href="checkout.html"]');
-if(navShop){
-  navShop.addEventListener('click',function(e){
+<script>
+document.querySelectorAll('.add-cart').forEach(btn=>{
+  btn.addEventListener('click',e=>{
     e.preventDefault();
-    exportCartToSimple();
-    window.location.href='checkout.html';
+
+    const product = {
+      id: btn.dataset.id,
+      name: btn.dataset.name,
+      price: btn.dataset.price,
+      img: btn.dataset.img
+    };
+
+    addToCart(product);   // تضيف المنتج
+    openDrawer();         // تفتح السلة فقط
   });
-}
+});
+</script>
 </script>
 <script>
 // navbar blur on scroll + reveal fade-ins
@@ -573,6 +581,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
