@@ -636,6 +636,44 @@ updateCounter();
 // expose cart for checkout
 function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart', JSON.stringify(items.map(i=>({name:i.name,price:i.price,qty:i.qty,img:i.img})))); }
 window.addEventListener('beforeunload',exportCartToSimple);
+  /* ===== Swipe To Close (Mobile) ===== */
+
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+
+const drawer = document.getElementById("cartDrawer");
+
+drawer.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+drawer.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+
+  currentX = e.touches[0].clientX;
+  let diff = currentX - startX;
+
+  // سحب لليمين فقط (لأن السلة في اليمين)
+  if (diff > 0) {
+    drawer.style.transform = `translateX(${diff}px)`;
+  }
+});
+
+drawer.addEventListener("touchend", () => {
+  if (!isDragging) return;
+
+  let diff = currentX - startX;
+
+  if (diff > 120) {
+    closeDrawer(); // إذا سحب أكثر من 120px تغلق
+  } else {
+    drawer.style.transform = "translateX(0)";
+  }
+
+  isDragging = false;
+});
 </script>
 <script>
 
@@ -696,6 +734,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
