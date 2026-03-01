@@ -636,7 +636,7 @@ updateCounter();
 // expose cart for checkout
 function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart', JSON.stringify(items.map(i=>({name:i.name,price:i.price,qty:i.qty,img:i.img})))); }
 window.addEventListener('beforeunload',exportCartToSimple);
-  /* ===== Swipe To Close (Mobile) ===== */
+  /* ===== Premium Swipe To Close (Mobile RTL) ===== */
 
 let startX = 0;
 let currentX = 0;
@@ -645,22 +645,48 @@ let isDragging = false;
 const drawer = document.getElementById("cartDrawer");
 
 drawer.addEventListener("touchstart", (e) => {
+
+  // اشتغل فقط إذا السلة مفتوحة
+  if (drawer.style.transform !== "translateX(0px)" &&
+      drawer.style.transform !== "translateX(0)") return;
+
   startX = e.touches[0].clientX;
   isDragging = true;
+
 });
 
 drawer.addEventListener("touchmove", (e) => {
+
   if (!isDragging) return;
 
   currentX = e.touches[0].clientX;
   let diff = currentX - startX;
 
-  // سحب لليمين فقط (لأن السلة في اليمين)
+  // سحب لليمين فقط
   if (diff > 0) {
+    drawer.style.transition = "none";
     drawer.style.transform = `translateX(${diff}px)`;
   }
+
 });
 
+drawer.addEventListener("touchend", () => {
+
+  if (!isDragging) return;
+
+  let diff = currentX - startX;
+
+  drawer.style.transition = ".35s ease";
+
+  if (diff > 120) {
+    closeDrawer();
+  } else {
+    drawer.style.transform = "translateX(0)";
+  }
+
+  isDragging = false;
+
+});
 drawer.addEventListener("touchend", () => {
   if (!isDragging) return;
 
@@ -734,6 +760,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
