@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WDZ™ | World of the Death Zone</title>
+<title>WDZ™ | About</title>
 
 <style>
 :root{
 --bg:#0B0B0B;
+--card:#111;
 --accent:#39FF14;
---text:#ffffff;
+--text:#fff;
 }
 
 body{
@@ -17,47 +18,66 @@ margin:0;
 background:var(--bg);
 color:var(--text);
 font-family:Arial, sans-serif;
-text-align:center;
 }
 
 .section{
-padding:100px 20px;
-max-width:900px;
-margin:auto;
+padding:80px 20px;
+text-align:center;
 }
 
 h1{
+color:var(--accent);
 font-size:42px;
-color:var(--accent);
-margin-bottom:30px;
+margin-bottom:50px;
 }
 
-p{
-line-height:2;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:var(--card);
+padding:40px 30px;
+border-radius:20px;
+position:relative;
+transition:.4s;
+border:1px solid rgba(57,255,20,.15);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px rgba(57,255,20,.4);
+border:1px solid var(--accent);
+}
+
+.card h3{
+color:var(--accent);
+margin-bottom:20px;
+}
+
+.card p{
 opacity:.85;
-font-size:18px;
-margin-bottom:25px;
-}
-
-.highlight{
-color:var(--accent);
-font-weight:bold;
+line-height:1.9;
 }
 
 .btn{
 display:inline-block;
-margin-top:40px;
+margin-top:70px;
 background:var(--accent);
 color:#000;
-padding:14px 30px;
-border-radius:14px;
+padding:14px 40px;
+border-radius:16px;
 text-decoration:none;
 font-weight:700;
 transition:.3s;
 }
 
 .btn:hover{
-box-shadow:0 0 25px var(--accent);
+box-shadow:0 0 30px var(--accent);
 }
 </style>
 </head>
@@ -68,28 +88,46 @@ box-shadow:0 0 25px var(--accent);
 
 <h1>WDZ™ – World of the Death Zone</h1>
 
-<p>
-WDZ™ ليست مجرد علامة ملابس.
-إنها <span class="highlight">عقلية</span>.
-</p>
+<div class="grid">
 
+<div class="card">
+<h3>ما هي WDZ؟</h3>
 <p>
-Death Zone ليست الموت…
-بل المنطقة التي تخرج فيها من الراحة،
-المنطقة التي تواجه فيها خوفك،
-المنطقة التي تتحول فيها من عادي إلى مسيطر.
+WDZ ليست مجرد علامة ملابس.
+إنها عقلية.
+إنها منطقة التحول من عادي إلى مسيطر.
 </p>
+</div>
 
+<div class="card">
+<h3>فلسفة Death Zone</h3>
 <p>
-نحن براند ستريت وير مغربي بطموح عالمي.
-نقدم قطع محدودة بإحساس فاخر وجودة عالية.
-كل تصميم يعكس القوة، التفرد، والهوية الجريئة.
+Death Zone ليست الموت.
+بل المنطقة التي تخرج فيها من الراحة
+وتواجه خوفك وتبني نسختك الأقوى.
 </p>
+</div>
 
+<div class="card">
+<h3>لماذا نحن مختلفون؟</h3>
 <p>
-<span class="highlight">WDZ ليست للجميع.</span><br>
+إصدارات محدودة.
+تصميم مستقبلي.
+هوية جريئة.
+تجربة فاخرة من أول دخول للموقع حتى استلام المنتج.
+</p>
+</div>
+
+<div class="card">
+<h3>WDZ ليست للجميع</h3>
+<p>
 هي لمن يعرف قيمته.
+لمن يريد التميز.
+لمن لا يقبل أن يكون عادي.
 </p>
+</div>
+
+</div>
 
 <a href="collection.html" class="btn">اكتشف المجموعة</a>
 
