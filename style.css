@@ -81,6 +81,7 @@ button,
 
 .logo span {
   color: var(--accent);
+  text-shadow: 0 0 12px var(--accent);
 }
 
 .logo small {
@@ -260,8 +261,10 @@ button,
 
 .feature:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 60px rgba(57, 255, 20, .18),
-              inset 0 0 0 1px rgba(57, 255, 20, .45);
+  box-shadow:
+    0 0 16px var(--accent),
+    0 25px 60px rgba(57, 255, 20, .18),
+    inset 0 0 0 1px rgba(57, 255, 20, .45);
 }
 
 .feature.standard {
