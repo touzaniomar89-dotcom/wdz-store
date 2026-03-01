@@ -1,4 +1,3 @@
-/* filepath: c:\Users\asus\Desktop\WDZSHO¨P\main.js */
 /* global script used by every page */
 
 const Cart = (() => {
@@ -95,7 +94,7 @@ const Cart = (() => {
           if (act === 'inc') changeQty(id, 1);
           else if (act === 'dec') changeQty(id, -1);
           else if (act === 'rm') remove(id);
-          render(); // re‑render after modification
+          render();
         });
       });
     }
@@ -119,7 +118,6 @@ const Cart = (() => {
   };
 })();
 
-/* small utility functions */
 function showToast(text) {
   const t = document.getElementById('toast');
   t.textContent = text;
