@@ -70,7 +70,6 @@ position:sticky;
 top:0;
 z-index:1000;
 }
-
 .scrolled{
 background:#0B0B0B;
 box-shadow:0 10px 30px rgba(0,0,0,.35);
@@ -479,14 +478,20 @@ input[name="phone"]{direction:ltr;text-align:left}
 <body>
 
 <header>
-<div class="container nav">
-<div class="logo">WDZ™ <span>Global</span></div>
-<nav>
-<a href="#">الرئيسية</a>
-<a href="checkout.html" class="nav-btn">اطلب الآن</a>
-<button class="cart-btn" id="cartBtn"><span class="cart-icon">🛒</span><span>السلة</span><span class="cart-count" id="cartCount">0</span></button>
-</nav>
-</div>
+  <div class="nav">
+    <div class="logo">WDZ™ <span>Global</span></div>
+
+    <nav>
+      <a href="#">الرئيسية</a>
+      <a href="checkout.html" class="nav-btn">اطلب الآن</a>
+
+      <button class="cart-btn" id="cartBtn">
+        <span class="cart-icon">🛒</span>
+        <span>السلة</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </nav>
+  </div>
 </header>
 
 <section class="hero container reveal">
@@ -954,6 +959,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
