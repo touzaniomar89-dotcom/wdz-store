@@ -259,6 +259,17 @@ transition:transform .6s ease;
 .feature:hover img{
 transform:scale(1.08);
 }
+  .feature img{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:16px;
+transition:transform .4s ease;
+}
+
+.feature:hover img{
+transform:scale(1.05);
+}
   
 .std-icon{
 width:40px;height:40px;border-radius:999px;
@@ -492,51 +503,10 @@ input[name="phone"]{direction:ltr;text-align:left}
 
 <div class="products-grid">
 
-<div class="feature">
-
-  <img src="WDZ1.png"
-       alt="WDZ Oversize Black"
-       style="width:100%; border-radius:12px; margin-bottom:12px;">
-
-  <div style="font-weight:700;margin-bottom:6px">
-    WDZ Oversize — Black
-  </div>
-
-  <div style="color:var(--accent);font-weight:800;margin-bottom:12px">
-    159 MAD
-  </div>
-
-  <a href="checkout.html" class="btn">
-     اطلب الآن
-  </a>
-
-  <a href="#"
-     class="btn btn-outline add-cart"
-     data-id="oversize-black"
-     data-name="WDZ Oversize — Black"
-     data-price="159"
-     data-img="WDZ1.png">
-     أضف للسلة
-  </a>
-
-</div>  </div>
-
-<div class="products-grid">
-
-  <section class="section reveal" id="products">
-<h2>WDZ™ Products</h2>
-
-<div class="products-grid">
-
-  <!-- Product 1 -->
   <div class="feature">
     <img src="WDZ1.png" alt="WDZ Oversize Black">
-    <div style="font-weight:700;margin-bottom:6px">
-      WDZ Oversize — Black
-    </div>
-    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">
-      159 MAD
-    </div>
+    <div class="product-title">WDZ Oversize — Black</div>
+    <div class="product-price">159 MAD</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="oversize-black"
@@ -547,15 +517,10 @@ input[name="phone"]{direction:ltr;text-align:left}
     </a>
   </div>
 
-  <!-- Product 2 -->
   <div class="feature">
     <img src="WDZ2.png" alt="WDZ Tracksuit Pro">
-    <div style="font-weight:700;margin-bottom:6px">
-      WDZ Tracksuit — Pro
-    </div>
-    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">
-      159 MAD
-    </div>
+    <div class="product-title">WDZ Tracksuit — Pro</div>
+    <div class="product-price">159 MAD</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
@@ -566,15 +531,10 @@ input[name="phone"]{direction:ltr;text-align:left}
     </a>
   </div>
 
-  <!-- Product 3 -->
   <div class="feature">
-    <img src="WDZ3.png" alt="WDZ Design 3">
-    <div style="font-weight:700;margin-bottom:6px">
-      WDZ Limited — Drop 03
-    </div>
-    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">
-      159 MAD
-    </div>
+    <img src="WDZ3.png" alt="WDZ Limited 03">
+    <div class="product-title">WDZ Limited — Drop 03</div>
+    <div class="product-price">159 MAD</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="drop-03"
@@ -585,46 +545,9 @@ input[name="phone"]{direction:ltr;text-align:left}
     </a>
   </div>
 
-  <!-- Product 4 -->
-  <div class="feature">
-    <img src="WDZ4.png" alt="WDZ Design 4">
-    <div style="font-weight:700;margin-bottom:6px">
-      WDZ Limited — Drop 04
-    </div>
-    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">
-      159 MAD
-    </div>
-    <a href="checkout.html" class="btn">اطلب الآن</a>
-    <a href="#" class="btn btn-outline add-cart"
-       data-id="drop-04"
-       data-name="WDZ Limited — Drop 04"
-       data-price="159"
-       data-img="WDZ4.png">
-       أضف للسلة
-    </a>
-  </div>
-
-  <!-- Product 5 -->
-  <div class="feature">
-    <img src="WDZ5.png" alt="WDZ Design 5">
-    <div style="font-weight:700;margin-bottom:6px">
-      WDZ Limited — Drop 05
-    </div>
-    <div style="color:var(--accent);font-weight:800;margin-bottom:12px">
-      159 MAD
-    </div>
-    <a href="checkout.html" class="btn">اطلب الآن</a>
-    <a href="#" class="btn btn-outline add-cart"
-       data-id="drop-05"
-       data-name="WDZ Limited — Drop 05"
-       data-price="159"
-       data-img="WDZ5.png">
-       أضف للسلة
-    </a>
-  </div>
-
 </div>
 </section>
+  </div>
 
 <section class="wdz-standards">
   <h2 class="section-title">WDZ™ Global Standards</h2>
@@ -927,6 +850,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
