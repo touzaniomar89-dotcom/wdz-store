@@ -419,16 +419,31 @@ font-size:14px;
   .btn-outline{margin-top:10px}
   .features .feature{width:100%;max-width:340px}
 }
- /* ===== PRODUCTS GRID PERFECT CENTER ===== */
+/* ===== PRODUCTS GRID PERFECT CENTER ===== */
 .products-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 280px));
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
   gap:30px;
   justify-content:center;
   margin-top:40px;
 }
 
-/* Tablet */
+/* Product Card */
+.products-grid .product-card{
+  width:100%;
+  max-width:280px;
+  margin:0 auto;
+}
+
+/* Product Image FIX (IMPORTANT) */
+.products-grid img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:14px;
+}
+
+/* ===== Tablet ===== */
 @media (max-width:1023px){
   .products-grid{
     grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
@@ -436,8 +451,12 @@ font-size:14px;
 }
 
 /* ===== WDZ PERFECT MOBILE FIX ===== */
+@media (max-width:768px){
 
-@media (max-width: 768px){
+  .products-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
 
   .hero{
     flex-direction:column;
@@ -482,7 +501,6 @@ font-size:14px;
   .logo{
     font-size:18px;
   }
-
 }
 
 /* Product Card */
@@ -698,13 +716,8 @@ input[name="phone"]{direction:ltr;text-align:left}
        data-price="159"
        data-img="WDZ1.png">
        أضف للسلة
-    </a>
-  </div>
-
-</div>
+    </a>  </div>
 </section>
-  </div>
-
 <section class="wdz-standards">
   <h2 class="section-title">WDZ™ Global Standards</h2>
 
@@ -1006,4 +1019,5 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
