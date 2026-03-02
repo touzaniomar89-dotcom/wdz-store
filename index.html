@@ -119,6 +119,18 @@ justify-content:space-between;
 position:relative;
 overflow:hidden;
 }
+  /* 👇 ضيف هذا مباشرة تحتهم */
+.hero::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle, rgba(188,253,76,0.15), transparent 70%);
+top:-150px;
+right:-150px;
+filter:blur(80px);
+z-index:-1;
+}
 
 .hero::after{
 content:"";
@@ -944,6 +956,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
