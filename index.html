@@ -435,11 +435,54 @@ font-size:14px;
   }
 }
 
-/* Mobile */
-@media (max-width:767px){
-  .products-grid{
-    grid-template-columns:1fr;
+/* ===== WDZ PERFECT MOBILE FIX ===== */
+
+@media (max-width: 768px){
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+    padding:40px 0;
   }
+
+  .hero-text{
+    order:1;
+  }
+
+  .hero-img{
+    order:2;
+    margin-top:30px;
+  }
+
+  .hero-img img{
+    width:100%;
+    max-width:320px;
+  }
+
+  .display-title{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .price{
+    font-size:26px;
+  }
+
+  nav{
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+
+  nav a{
+    font-size:14px;
+    margin-left:10px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
 }
 
 /* Product Card */
@@ -963,3 +1006,4 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
