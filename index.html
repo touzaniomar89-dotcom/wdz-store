@@ -402,25 +402,19 @@ font-size:14px;
   .btn-outline{margin-top:10px}
   .features .feature{width:100%;max-width:340px}
 }
-  /* ===== PRODUCTS GRID PERFECT CENTER ===== */
+ /* ===== PRODUCTS GRID PERFECT CENTER ===== */
 .products-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(260px, 280px));
   gap:30px;
-  justify-content:center;   /* يخليهم فالنص */
+  justify-content:center;
   margin-top:40px;
-}
-/* Desktop */
-@media (min-width:1024px){
-  .products-grid{
-   grid-template-columns:repeat(4,1fr);
-  }
 }
 
 /* Tablet */
-@media (min-width:768px) and (max-width:1023px){
+@media (max-width:1023px){
   .products-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   }
 }
 
@@ -919,6 +913,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
