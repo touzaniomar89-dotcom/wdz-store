@@ -402,6 +402,33 @@ font-size:14px;
   font-size:14px;
   line-height:1.6;
 }
+
+  .footer-link{
+  color:#bcfd4c;
+  text-decoration:none;
+  font-weight:600;
+  position:relative;
+  transition:.3s;
+}
+
+.footer-link::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-4px;
+  width:0;
+  height:2px;
+  background:#bcfd4c;
+  transition:.3s;
+}
+
+.footer-link:hover{
+  color:#fff;
+}
+
+.footer-link:hover::after{
+  width:100%;
+}
   
 </style>
 <style>
@@ -658,7 +685,7 @@ input[name="phone"]{direction:ltr;text-align:left}
     </a>
   </div>
 
-  <a href="privacy-policy.html">سياسة الخصوصية</a>
+  <a href="pr<a href="privacy-policy.html" class="footer-link">سياسة الخصوصية</a>
 
 </div>
 </section>
@@ -965,4 +992,5 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
