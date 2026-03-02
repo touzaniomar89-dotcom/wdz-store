@@ -116,6 +116,39 @@ justify-content:space-between;
 position:relative;
 overflow:hidden;
 }
+
+  .hero-label{
+  display:inline-block;
+  padding:6px 16px;
+  border-radius:999px;
+  background:rgba(188,253,76,.12);
+  border:1px solid rgba(188,253,76,.4);
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:1px;
+  margin-bottom:20px;
+}
+
+.hero-desc{
+  opacity:.8;
+  font-size:18px;
+  max-width:520px;
+  margin:20px 0 30px;
+  line-height:1.8;
+}
+
+.hero-price{
+  font-size:22px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:25px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
   /* 👇 ضيف هذا مباشرة تحتهم */
 .hero::before{
 content:"";
@@ -497,20 +530,27 @@ input[name="phone"]{direction:ltr;text-align:left}
     </nav>
   </div>
 </header>
-
-<section class="hero container reveal">
 <div class="hero-text">
-<h1 class="display-title">WDZ PREMIUM STREETWEAR</h1>
-<p>هوية جريئة، تصميم مستقبلي، إصدار محدود لمن يرفض العادي.</p>
-<div class="price">199 MAD</div>
-<div class="badges">
-🌍 شحن لجميع مدن المغرب<br>
-⭐ +1000 عميل راضٍ<br>
-🛡 ضمان جودة حقيقي
-</div>
-<br>
-<a href="checkout.html" class="btn btn-shop">اطلب الآن</a>
-<a href="#products" class="btn btn-outline" style="margin-inline-start:12px">استعراض المنتجات</a>
+
+  <span class="hero-label">LIMITED DROP 2026</span>
+
+  <h1 class="display-title">
+    WDZ™ IS NOT<br>
+    <span class="accent">FOR EVERYONE</span>
+  </h1>
+
+  <p class="hero-desc">
+    براند ستريت وير مغربي بروح عالمية.
+    إصدار محدود بجودة احترافية لمن يرفض العادي.
+  </p>
+
+  <div class="hero-price">Starting from 159 MAD</div>
+
+  <div class="hero-buttons">
+    <a href="checkout.html" class="btn btn-shop">اطلب الآن</a>
+    <a href="#products" class="btn btn-outline">استعراض المنتجات</a>
+  </div>
+
 </div>
 
 <div class="hero-img">
@@ -963,6 +1003,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
