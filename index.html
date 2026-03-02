@@ -138,15 +138,19 @@ pointer-events:none;
 }
 
 .hero-img{
-perspective:1200px;
+  perspective:1200px;
+  display:flex;
+  justify-content:center; /* تخليها فالنص */
 }
 
 .hero-img img{
-transition:transform .6s ease, box-shadow .6s ease;
+  width:75%;        /* هنا تصغير الحجم */
+  max-width:550px;  /* أقصى حجم */
+  transition:transform .6s ease, box-shadow .6s ease;
 }
 
 .hero-img img:hover{
-transform:rotateY(8deg) rotateX(4deg) scale(1.05);
+  transform:rotateY(8deg) rotateX(4deg) scale(1.05);
 }
   
 .hero-text{flex:1;min-width:300px;}
@@ -959,6 +963,7 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
 
 
 
