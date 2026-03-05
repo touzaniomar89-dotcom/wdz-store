@@ -4,30 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- HTML Meta Tags --
+<!-- HTML Meta Tags -->
 
 <!-- Facebook Meta Tags -->
 <meta property="og:url" content="https://wdz-store.vercel.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="WDZ™ Official Store">
-<meta property="og:description" content="Premium quality. Limited edition. Order now.">
+<meta property="og:title" content="متجر WDZ™ الرسمي">
+<meta property="og:description" content="جودة متميزة. إصدار محدود. اطلب الآن.">
 <meta property="og:image" content="https://wdz-store.vercel.app/wdz-welcome.png">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content="wdz-store.vercel.app">
 <meta property="twitter:url" content="https://wdz-store.vercel.app/">
-<meta name="twitter:title" content="WDZ™ Official Store">
-<meta name="twitter:description" content="Premium quality. Limited edition. Order now.">
+<meta name="twitter:title" content="متجر WDZ™ الرسمي">
+<meta name="twitter:description" content="جودة متميزة. إصدار محدود. اطلب الآن.">
 <meta name="twitter:image" content="https://wdz-store.vercel.app/wdz-welcome.png">
 
 <!-- Meta Tags Generated via https://www.opengraph.xyz -->
 
 <!-- NOTE: You selected a new image. Please upload it to your server and replace "YOUR_IMAGE_URL_HERE" with the actual URL. -->
-<title>WDZ™ Official Store</title>
-<meta name="description" content="WDZ™ Premium Street Brand in Morocco. High quality. Limited edition. Cash on delivery.">
-<meta property="og:title" content="WDZ™ Official Store">
-<meta property="og:description" content="Premium quality. Limited edition. Order now.">
+<title>متجر WDZ™ الرسمي</title>
+<meta name="description" content="WDZ™ براند ستريت وير مغربي. جودة عالية. إصدار محدود. الدفع عند الاستلام.">
+<meta property="og:title" content="متجر WDZ™ الرسمي">
+<meta property="og:description" content="جودة متميزة. إصدار محدود. اطلب الآن.">
 <meta name="theme-color" content="#0a0a0a">
 <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=WDZ%E2%84%A2+Global+Brand">
 <meta property="og:type" content="website">
@@ -58,6 +58,21 @@ body{
     #0B0B0B;
   color:var(--text);
   overflow-x:hidden;
+  overflow-y:auto;
+  min-height:100%;
+  -webkit-overflow-scrolling:touch;
+}
+html{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  min-height:100%;
+}
+body.cart-open{
+  overflow:hidden;
+  position:fixed;
+  width:100%;
+  left:0;
+  top:0;
 }
 
 .container{width:90%;max-width:1200px;margin:auto;}
@@ -76,8 +91,9 @@ box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 .nav{display:flex;justify-content:space-between;align-items:center;}
 
-.logo{font-size:24px;font-weight:800;letter-spacing:2px;}
+.logo{font-size:24px;font-weight:800;letter-spacing:2px;display:flex;align-items:center;gap:12px;}
 .logo span{color:var(--accent);}
+.logo-img{width:42px;height:42px;object-fit:contain;border-radius:10px;}
 
 nav a{
 color:var(--text);
@@ -189,7 +205,6 @@ text-decoration:none;
 font-weight:700;
 transition:.3s;
 box-shadow:0 0 25px rgba(188,253,76,.35);
-box-shadow:0 0 25px rgba(188,253,76,.30);
 }
 .btn:hover{
 filter:saturate(120%);
@@ -276,12 +291,15 @@ transition:transform .6s ease;
 .feature:hover img{
 transform:scale(1.08);
 }
-  .feature img{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-border-radius:16px;
-transition:transform .4s ease;
+.feature img{
+  width:100%;
+  height:auto;
+  min-height:200px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:16px;
+  transition:transform .4s ease;
+  display:block;
 }
 
 .feature:hover img{
@@ -419,87 +437,26 @@ font-size:14px;
   .btn-outline{margin-top:10px}
   .features .feature{width:100%;max-width:340px}
 }
-/* ===== PRODUCTS GRID PERFECT CENTER ===== */
+ /* ===== PRODUCTS GRID PERFECT CENTER ===== */
 .products-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(260px, 280px));
   gap:30px;
   justify-content:center;
   margin-top:40px;
 }
 
-/* Product Card */
-.products-grid .product-card{
-  width:100%;
-  max-width:280px;
-  margin:0 auto;
-}
-
-/* Product Image FIX (IMPORTANT) */
-.products-grid img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:14px;
-}
-
-/* ===== Tablet ===== */
+/* Tablet */
 @media (max-width:1023px){
   .products-grid{
     grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   }
 }
 
-/* ===== WDZ PERFECT MOBILE FIX ===== */
-@media (max-width:768px){
-
+/* Mobile */
+@media (max-width:767px){
   .products-grid{
     grid-template-columns:1fr;
-    gap:20px;
-  }
-
-  .hero{
-    flex-direction:column;
-    text-align:center;
-    padding:40px 0;
-  }
-
-  .hero-text{
-    order:1;
-  }
-
-  .hero-img{
-    order:2;
-    margin-top:30px;
-  }
-
-  .hero-img img{
-    width:100%;
-    max-width:320px;
-  }
-
-  .display-title{
-    font-size:28px;
-    line-height:1.3;
-  }
-
-  .price{
-    font-size:26px;
-  }
-
-  nav{
-    display:flex;
-    gap:8px;
-    align-items:center;
-  }
-
-  nav a{
-    font-size:14px;
-    margin-left:10px;
-  }
-
-  .logo{
-    font-size:18px;
   }
 }
 
@@ -522,6 +479,25 @@ font-size:14px;
   aspect-ratio:1/1;
   object-fit:cover;
   border-radius:12px;
+  display:block;
+  min-height:200px;
+  background:#1a1a1a;
+}
+.product-img-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  min-height:200px;
+  background:#1a1a1a;
+  border-radius:12px;
+  overflow:hidden;
+}
+.product-img-wrap img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 /* Buttons responsive */
@@ -544,15 +520,18 @@ input[name="phone"]{direction:ltr;text-align:left}
 
 <header>
   <div class="nav">
-    <div class="logo">WDZ™ <span>Global</span></div>
+    <div class="logo">
+      <img src="/WDZ1.png" alt="WDZ" class="logo-img" width="42" height="42" decoding="async">
+      WDZ™ <span>Global</span>
+    </div>
 
     <nav>
-      <a href="#">الرئيسية</a>
-      <a href="checkout.html" class="nav-btn">اطلب الآن</a>
+      <a href="#">Home</a>
+      <a href="checkout.html" class="nav-btn">Order Now</a>
 
       <button class="cart-btn" id="cartBtn">
         <span class="cart-icon">🛒</span>
-        <span>السلة</span>
+        <span>Cart</span>
         <span class="cart-count" id="cartCount">0</span>
       </button>
     </nav>
@@ -561,9 +540,9 @@ input[name="phone"]{direction:ltr;text-align:left}
 
 <section class="hero container reveal">
 <div class="hero-text">
-<h1 class="display-title">WDZ PREMIUM STREETWEAR</h1>
+<h1 class="display-title">WDZ Premium Streetwear</h1>
 <p>هوية جريئة، تصميم مستقبلي، إصدار محدود لمن يرفض العادي.</p>
-<div class="price">199 MAD</div>
+<div class="price">199 درهم</div>
 <div class="badges">
 🌍 شحن لجميع مدن المغرب<br>
 ⭐ +1000 عميل راضٍ<br>
@@ -575,181 +554,180 @@ input[name="phone"]{direction:ltr;text-align:left}
 </div>
 
 <div class="hero-img">
-<img src="wdz-welcome.png">
+<img src="/wdz-welcome.png" alt="WDZ" width="550" height="550" decoding="async">
 </div>
 </section>
 
 <section class="section reveal" id="products">
-<h2>WDZ™ Products</h2>
+<h2>منتجات WDZ™</h2>
 
 <div class="products-grid">
 
   <div class="feature">
-    <img src="WDZ1.png" alt="WDZ Oversize Black">
-    <div class="product-title">WDZ Oversize — Black</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ1.png" alt="WDZ أوفرسايز أسود">
+    <div class="product-title">WDZ أوفرسايز — أسود</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="oversize-black"
-       data-name="WDZ Oversize — Black"
+       data-name="WDZ أوفرسايز — أسود"
        data-price="159"
-       data-img="WDZ1.png">
+       data-img="/WDZ1.png">
        أضف للسلة
     </a>
   </div>
 
   <div class="feature">
-    <img src="WDZ2.png" alt="WDZ Tracksuit Pro">
-    <div class="product-title">WDZ Tracksuit — Pro</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ2.png" alt="WDZ تراكسوت برو">
+    <div class="product-title">WDZ تراكسوت — برو</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
-       data-name="WDZ Tracksuit — Pro"
+       data-name="WDZ تراكسوت — برو"
        data-price="159"
-       data-img="WDZ2.png">
+       data-img="/WDZ2.png">
        أضف للسلة
     </a>
   </div>
 
   <div class="feature">
-    <img src="WDZ3.png" alt="WDZ Limited 03">
-    <div class="product-title">WDZ Limited — Drop 03</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ3.png" alt="WDZ ليمتد دروب 03">
+    <div class="product-title">WDZ ليمتد — دروب 03</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="drop-03"
-       data-name="WDZ Limited — Drop 03"
+       data-name="WDZ ليمتد — دروب 03"
        data-price="159"
-       data-img="WDZ3.png">
+       data-img="/WDZ3.png">
        أضف للسلة
     </a>
   </div>
   
   <div class="feature">
-    <img src="WDZ4.png" alt="WDZ Tracksuit Pro">
-    <div class="product-title">WDZ Tracksuit — Pro</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ4.png" alt="WDZ تراكسوت برو">
+    <div class="product-title">WDZ تراكسوت — برو</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
-       data-name="WDZ Tracksuit — Pro"
+       data-name="WDZ تراكسوت — برو"
        data-price="159"
-       data-img="WDZ4.png">
+       data-img="/WDZ4.png">
        أضف للسلة
     </a>
   </div>
   <div class="feature">
-    <img src="WDZ2.png" alt="WDZ Tracksuit Pro">
-    <div class="product-title">WDZ Tracksuit — Pro</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ2.png" alt="WDZ تراكسوت برو">
+    <div class="product-title">WDZ تراكسوت — برو</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
-       data-name="WDZ Tracksuit — Pro"
+       data-name="WDZ تراكسوت — برو"
        data-price="159"
-       data-img="WDZ2.png">
+       data-img="/WDZ2.png">
        أضف للسلة
     </a>
   </div>
   <div class="feature">
-    <img src="WDZ5.png" alt="WDZ Tracksuit Pro">
-    <div class="product-title">WDZ Tracksuit — Pro</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ5.png" alt="WDZ تراكسوت برو">
+    <div class="product-title">WDZ تراكسوت — برو</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
-       data-name="WDZ Tracksuit — Pro"
+       data-name="WDZ تراكسوت — برو"
        data-price="159"
-       data-img="WDZ5.png">
+       data-img="/WDZ5.png">
        أضف للسلة
     </a>
   </div>
   <div class="feature">
-    <img src="WDZ3.png" alt="WDZ Tracksuit Pro">
-    <div class="product-title">WDZ Tracksuit — Pro</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ3.png" alt="WDZ تراكسوت برو">
+    <div class="product-title">WDZ تراكسوت — برو</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
-       data-name="WDZ Tracksuit — Pro"
+       data-name="WDZ تراكسوت — برو"
        data-price="159"
-       data-img="WDZ3.png">
+       data-img="/WDZ3.png">
        أضف للسلة
     </a>
   </div>
   <div class="feature">
-    <img src="WDZ1.png" alt="WDZ Tracksuit Pro">
-    <div class="product-title">WDZ Tracksuit — Pro</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ1.png" alt="WDZ تراكسوت برو">
+    <div class="product-title">WDZ تراكسوت — برو</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="tracksuit-pro"
-       data-name="WDZ Tracksuit — Pro"
+       data-name="WDZ تراكسوت — برو"
        data-price="159"
-       data-img="WDZ1.png">
+       data-img="/WDZ1.png">
        أضف للسلة
     </a>
   </div>
 
    <div class="feature">
-    <img src="WDZ1.png" alt="WDZ Oversize Black">
-    <div class="product-title">WDZ Oversize — Black</div>
-    <div class="product-price">159 MAD</div>
+    <img src="/WDZ1.png" alt="WDZ أوفرسايز أسود">
+    <div class="product-title">WDZ أوفرسايز — أسود</div>
+    <div class="product-price">159 درهم</div>
     <a href="checkout.html" class="btn">اطلب الآن</a>
     <a href="#" class="btn btn-outline add-cart"
        data-id="oversize-black"
-       data-name="WDZ Oversize — Black"
+       data-name="WDZ أوفرسايز — أسود"
        data-price="159"
-       data-img="WDZ1.png">
+       data-img="/WDZ1.png">
        أضف للسلة
     </a>
   </div>
    <div class="feature">
-  <img src="WDZ1.png" alt="WDZ Oversize Black">
-  <div class="product-title">WDZ Oversize — Black</div>
-  <div class="product-price">159 MAD</div>
+    <img src="/WDZ1.png" alt="WDZ أوفرسايز أسود">
+    <div class="product-title">WDZ أوفرسايز — أسود</div>
+    <div class="product-price">159 درهم</div>
+    <a href="checkout.html" class="btn">اطلب الآن</a>
+    <a href="#" class="btn btn-outline add-cart"
+       data-id="oversize-black"
+       data-name="WDZ أوفرسايز — أسود"
+       data-price="159"
+       data-img="/WDZ1.png">
+       أضف للسلة
+    </a>
+  </div>
 
-  <a href="checkout.html" class="btn">اطلب الآن</a>
-
-  <a href="#" class="btn btn-outline add-cart"
-     data-id="oversize-black-2"
-     data-name="WDZ Oversize — Black"
-     data-price="159"
-     data-img="WDZ1.png">
-     أضف للسلة
-  </a>
 </div>
-
-  </div>  <!-- ❗ تسد products-grid هنا -->
 </section>
+
 <section class="wdz-standards">
-  <h2 class="section-title">WDZ™ Global Standards</h2>
+  <h2 class="section-title">معايير WDZ™ العالمية</h2>
 
   <div class="standards-grid">
 
     <div class="standard-card">
       <div class="standard-icon">🌍</div>
-      <h3>Global Quality Control</h3>
-      <p>Every product passes strict global inspection standards.</p>
+      <h3>مراقبة الجودة العالمية</h3>
+      <p>كل منتج يخضع لمعايير فحص عالمية صارمة.</p>
     </div>
 
     <div class="standard-card">
       <div class="standard-icon">🔐</div>
-      <h3>Secure Data Encryption</h3>
-      <p>Your data is protected with advanced security systems.</p>
+      <h3>تشفير آمن للبيانات</h3>
+      <p>بياناتك محمية بأنظمة أمان متقدمة.</p>
     </div>
 
     <div class="standard-card">
       <div class="standard-icon">🚀</div>
-      <h3>Fast Nationwide Shipping</h3>
-      <p>Rapid delivery across Morocco with tracking system.</p>
+      <h3>شحن سريع لجميع أنحاء المغرب</h3>
+      <p>توصيل سريع مع نظام تتبع.</p>
     </div>
 
     <div class="standard-card">
       <div class="standard-icon">💵</div>
-      <h3>Cash On Delivery</h3>
-      <p>Pay safely when your order arrives at your door.</p>
+      <h3>الدفع عند الاستلام</h3>
+      <p>ادفع بأمان عند استلام طلبك عند الباب.</p>
     </div>
 
   </div>
@@ -776,7 +754,7 @@ input[name="phone"]{direction:ltr;text-align:left}
  
 
 <footer>
-© 2026 WDZ™ Global Brand — All Rights Reserved
+© 2026 WDZ™ العلامة العالمية — جميع الحقوق محفوظة
 </footer>
 
 <div id="cartOverlay"
@@ -787,8 +765,7 @@ input[name="phone"]{direction:ltr;text-align:left}
             pointer-events:none;
             transition:.3s;">
 </div>
-  
-</div>
+
 <aside id="cartDrawer" style="position:fixed;top:0;right:0;height:100vh;width:380px;max-width:100%;background:#1A1A1A;box-shadow:-20px 0 60px rgba(0,0,0,.45);transform:translateX(100%);transition:.35s;border-top-left-radius:18px;border-bottom-left-radius:18px;display:flex;flex-direction:column">
   <div style="padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center">
     <div style="font-weight:800">سلة الشراء</div>
@@ -796,9 +773,9 @@ input[name="phone"]{direction:ltr;text-align:left}
   </div>
   <div id="cartItems" style="flex:1;overflow:auto;padding:16px"></div>
   <div style="padding:16px;border-top:1px solid rgba(255,255,255,.06)">
-    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span>المجموع الفرعي</span><strong id="subTotal">0 MAD</strong></div>
-    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span>الشحن</span><strong id="shipping">30 MAD</strong></div>
-    <div style="display:flex;justify-content:space-between;font-size:18px"><span>الإجمالي</span><strong id="grandTotal">0 MAD</strong></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span>المجموع الفرعي</span><strong id="subTotal">0 درهم</strong></div>
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span>الشحن</span><strong id="shipping">30 درهم</strong></div>
+    <div style="display:flex;justify-content:space-between;font-size:18px"><span>الإجمالي</span><strong id="grandTotal">0 درهم</strong></div>
     <a href="checkout.html" class="btn" style="display:block;text-align:center;margin-top:12px">الانتقال للدفع</a>
   </div>
 </aside>
@@ -811,10 +788,12 @@ function setCart(items){ localStorage.setItem('cartFull', JSON.stringify(items))
 function updateCounter(){ const count=getCart().reduce((a,i)=>a+i.qty,0); document.getElementById('cartCount').innerText=count; }
 function showToast(text){ const t=document.getElementById('toast'); t.innerText=text||t.innerText; t.style.opacity='1'; setTimeout(()=>{ t.style.opacity='0'; },1200); }
 function openDrawer(){
+  var scrollY = window.scrollY || window.pageYOffset;
+  document.body.setAttribute('data-scroll-y', scrollY);
   document.getElementById('cartOverlay').style.opacity='1';
   document.getElementById('cartOverlay').style.pointerEvents='auto';
   document.getElementById('cartDrawer').style.transform='translateX(0)';
-  document.body.style.overflow='hidden'; // منع السكرول
+  document.body.classList.add('cart-open');
   renderCart();
 }
 
@@ -822,15 +801,19 @@ function closeDrawer(){
   document.getElementById('cartOverlay').style.opacity='0';
   document.getElementById('cartOverlay').style.pointerEvents='none';
   document.getElementById('cartDrawer').style.transform='translateX(100%)';
-  document.body.style.overflow='auto'; // رجوع السكرول
+  document.body.classList.remove('cart-open');
+  var scrollY = document.body.getAttribute('data-scroll-y');
+  if (scrollY !== null && scrollY !== '') window.scrollTo(0, parseInt(scrollY, 10));
 }
 function addToCart(p){ const items=getCart(); const idx=items.findIndex(i=>i.id===p.id); if(idx>-1){ items[idx].qty+=1; } else { items.push({id:p.id,name:p.name,price:parseInt(p.price),img:p.img,qty:1}); } setCart(items); showToast('تمت إضافة المنتج إلى السلة'); renderCart(); }
 function removeItem(id){ const items=getCart().filter(i=>i.id!==id); setCart(items); renderCart(); }
 function updateQty(id,delta){ const items=getCart(); const it=items.find(i=>i.id===id); if(!it) return; it.qty=Math.max(1,it.qty+delta); setCart(items); renderCart(); }
-function formatMAD(n){ return `${n} MAD`; }
-function renderCart(){ const items=getCart(); const wrap=document.getElementById('cartItems'); if(items.length===0){ wrap.innerHTML=`<div style="text-align:center;opacity:.7;padding:24px">السلة فارغة</div>`; document.getElementById('subTotal').innerText=formatMAD(0); document.getElementById('grandTotal').innerText=formatMAD(0); return; } wrap.innerHTML=items.map(i=>`
+function formatMAD(n){ return `${n} درهم`; }
+function renderCart(){ const items=getCart(); const wrap=document.getElementById('cartItems'); if(items.length===0){ wrap.innerHTML=`<div style="text-align:center;opacity:.7;padding:24px">السلة فارغة</div>`; document.getElementById('subTotal').innerText=formatMAD(0); document.getElementById('grandTotal').innerText=formatMAD(0); document.getElementById('shipping').innerText=formatMAD(0); return; } wrap.innerHTML=items.map(i=>{
+  const imgSrc = (i.img && (i.img.startsWith('/') || i.img.startsWith('http'))) ? i.img : '/' + (i.img || '');
+  return `
   <div style="display:flex;gap:12px;padding:10px;border-bottom:1px solid rgba(255,255,255,.06)">
-    <img src="${i.img}" alt="${i.name}" style="width:60px;height:60px;border-radius:10px;object-fit:cover">
+    <img src="${imgSrc}" alt="${i.name}" style="width:60px;height:60px;border-radius:10px;object-fit:cover" loading="lazy" decoding="async">
     <div style="flex:1">
       <div style="font-weight:700">${i.name}</div>
       <div style="color:var(--accent)">${formatMAD(i.price)}</div>
@@ -841,7 +824,7 @@ function renderCart(){ const items=getCart(); const wrap=document.getElementById
         <button class="cart-btn" style="margin-inline-start:auto;border:none" data-act="rm" data-id="${i.id}">إزالة</button>
       </div>
     </div>
-  </div>`).join('');
+  </div>`; }).join('');
   wrap.querySelectorAll('button[data-act]').forEach(b=>{
     const id=b.getAttribute('data-id'); const act=b.getAttribute('data-act');
     b.onclick=()=>{ if(act==='inc') updateQty(id,1); else if(act==='dec') updateQty(id,-1); else removeItem(id); };
@@ -862,6 +845,13 @@ document.getElementById('cartBtn').addEventListener('click',openDrawer);
 document.getElementById('closeCart').addEventListener('click',closeDrawer);
 document.getElementById('cartOverlay').addEventListener('click',closeDrawer);
 updateCounter();
+// Restore scroll on mobile when leaving cart or returning to tab
+document.addEventListener('visibilitychange', function(){
+  if (document.getElementById('cartDrawer').style.transform === 'translateX(100%)' || document.getElementById('cartDrawer').style.transform === '') document.body.classList.remove('cart-open');
+});
+window.addEventListener('pageshow', function(){
+  if (document.getElementById('cartDrawer').style.transform === 'translateX(100%)' || document.getElementById('cartDrawer').style.transform === '') document.body.classList.remove('cart-open');
+});
 // expose cart for checkout
 function exportCartToSimple(){ const items=getCart(); localStorage.setItem('cart', JSON.stringify(items.map(i=>({name:i.name,price:i.price,qty:i.qty,img:i.img})))); }
 window.addEventListener('beforeunload',exportCartToSimple);
@@ -921,51 +911,6 @@ drawer.addEventListener("touchend", () => {
   isDragging = false;
 
 });
-drawer.addEventListener("touchmove", (e) => {
-
-  if (!isDragging) return;
-
-  currentX = e.touches[0].clientX;
-  let diff = currentX - startX;
-
-  // سحب لليمين فقط
-  if (diff > 0) {
-    drawer.style.transition = "none";
-    drawer.style.transform = `translateX(${diff}px)`;
-  }
-
-});
-
-drawer.addEventListener("touchend", () => {
-
-  if (!isDragging) return;
-
-  let diff = currentX - startX;
-
-  drawer.style.transition = ".35s ease";
-
-  if (diff > 120) {
-    closeDrawer();
-  } else {
-    drawer.style.transform = "translateX(0)";
-  }
-
-  isDragging = false;
-
-});
-drawer.addEventListener("touchend", () => {
-  if (!isDragging) return;
-
-  let diff = currentX - startX;
-
-  if (diff > 120) {
-    closeDrawer(); // إذا سحب أكثر من 120px تغلق
-  } else {
-    drawer.style.transform = "translateX(0)";
-  }
-
-  isDragging = false;
-});
 </script>
 <script>
 
@@ -1024,6 +969,3 @@ document.body.style.opacity="1";
 
   </body>
 </html>
-
-
-
