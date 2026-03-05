@@ -137,7 +137,7 @@ if(cart.length === 0){
     const q = item.qty || 1;
     const line = item.price * q;
     subtotal += line;
-    const imgSrc = (item.img && (item.img.startsWith("/") || item.img.startsWith("http"))) ? item.img : "/" + (item.img || "");
+    const imgSrc = (item.img && item.img.startsWith("http")) ? item.img : (item.img || "");
     return `<div class="summary-item">
       <img src="${imgSrc}" alt="${item.name}" loading="lazy" decoding="async">
       <div class="summary-item-info">
