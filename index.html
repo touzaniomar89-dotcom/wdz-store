@@ -486,15 +486,15 @@ font-size:14px;
 .product-img-wrap{
   position:relative;
   width:100%;
-  aspect-ratio:1/1;
-  min-height:200px;
+  padding-top:100%; /* 1:1 ratio */
   background:#1a1a1a;
   border-radius:12px;
   overflow:hidden;
 }
 .product-img-wrap img{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   object-fit:cover;
@@ -969,3 +969,4 @@ document.body.style.opacity="1";
 
   </body>
 </html>
+
